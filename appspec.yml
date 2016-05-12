@@ -2,4 +2,8 @@ version: 0.0
 os: linux
 files:
    - source: /
-     destination: /usr/ec2-user/
+     destination: /usr/github/cloud_services_repo/
+hooks:
+   AfterInstall:
+    - location: scripts/start.sh
+      runas: root
