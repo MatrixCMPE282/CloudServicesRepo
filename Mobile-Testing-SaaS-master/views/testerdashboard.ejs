@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="./js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="./js/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="./js/ie10-viewport-bug-workaround.js"></script>
+    
+        <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+	
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Mtaas - Tester Dashboard</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="stylesheets/dashboard.css" rel="stylesheet">
+    <link href="stylesheets/file1.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<style>
+
+.has-error .help-block{
+	color:red;
+}
+
+.has-error .form-control{
+	border:1px solid red;
+}
+.rowmain{
+
+background: url("./images/cloud.jpg");
+
+width:1;
+height:1300px;
+top:53px;
+left:250px;
+
+}
+
+</style>
+  </head>
+
+  <body ng-app="mtaas" data-ng-controller="mtaas">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">{{first_name}} {{last_name}}</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" ng-click="ho_me()">Dashboard</a></li>
+            <!-- <li><a href="#">Settings</a></li> -->
+            <li><a href="#" ng-click="pro_file()">Profile</a></li>
+            <li><a href="#" ng-click="log_out()">Logout</a></li>
+<!--             <li class="dropdown">
+            	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="#">Action</a></li>
+	            <li><a href="#">Another action</a></li>
+	            <li><a href="#">Something else here</a></li>
+	            <li><a href="#">Separated link</a></li>
+	            <li><a href="#">One more separated link</a></li>
+	          </ul>
+        	</li> -->
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid" id="wrapper">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" style="background: url(./images/cloud.jpg);">
+          <ul class="nav nav-sidebar">
+            <!-- <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li> -->
+            <li><button type="button" class="list-group-item active" ng-click="ho_me()" style="margin:1px 0 0 0">Home</button></li>
+            <li><button type="button" class="list-group-item" ng-click="op_ts()" style="margin:3px 0 0 0" ng-disabled="rating > 0">Optional Test</button></li>
+            <li><button type="button" class="list-group-item" ng-click="cr_pr()" style="margin:3px 0 0 0" ng-disabled= "status1 === 'AV'">Current Project</button></li>
+            <li><button type="button" class="list-group-item" ng-click="nw_pr()" style="margin:3px 0 0 0" ng-disabled="offer === 0">New Projects<span class="badge">{{offer}}</span></button></li>
+            <li><button type="button" class="list-group-item" ng-click="bl_rw()" style="margin:3px 0 0 0">Billng & Rewards</button></li>
+          </ul>          
+<!--           <ul class="nav nav-sidebar">
+            <li><a href="">Nav item</a></li>
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
+            <li><a href="">More navigation</a></li>
+          </ul> -->
+<!--           <ul class="nav nav-sidebar">
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
+          </ul> -->
+        </div>
+        
+        <div class="rowmain">
+        
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-show="home1"> 
+          
+          <div class="row col-md-7" style="margin:0 25% 0 23%;padding:5px 5px 5px 5px;border: solid #337AB7  1px;opacity:0.9; background-color:#ffffff">
+          <h3 class="page-header">Rating : {{rating}}.0</h3>
+			<h1 align= "center">Welcome to MTaas</h1>
+			 <h3 align= "center">Your Application will be tested here on demand for free!<h3><br/>
+			 <div style="text-align:left;">
+			  <h4 >
+			  &#10004; Go Ahead and take optional test to increase your rating(if rating is zero). <br/>
+			  &#10004; Accept or reject new project requests as per your choice<br/>
+			  &#10004; check your current project and do timely bug reporting<br/>
+			  &#10004; Check your payment per project in billing & Rewards page.
+			</h4>
+			</div>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<h6>*Terms & Conditions: Project timings and payments is not guarantee of this website. Please talk directly with app providerabout payment and testing timeline.
+			 Project reports shall be sent timly as per developer's requiremnts.
+			<h6/>
+			</div>
+          
+          
+
+<!--           <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Label</h4>
+              <span class="text-muted">Something else</span>
+            </div>
+          </div> -->
+
+<!--           <h2 class="sub-header">Section title</h2> -->
+          <div class="table-responsive">
+          </div>
+        </div>
+        
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="opacity:0.9; background-color:#ffffff" ng-show="opts">
+          <h1 class="page-header">Rating : {{rating}}.0</h1>
+          <form name="test_form" enctype="multipart/form-data" class="form-horizontal" novalidate>
+			<div class="row">
+			<label>1. Which is NOT true -  The black box tester:</label><br>
+			<div class="radio-inline">
+				<input type="radio" ng-model="q1" name="q1" value="1" ng-change="mainr()">
+				should be able to understand a functional specification or requirements document<br>
+			
+				<input type="radio" ng-model="q1" name="q1" value="2" ng-change="mainr()">
+				should be able to understand the source code<br>
+			
+				<input type="radio" ng-model="q1" name="q1" value="3" ng-change="mainr()">
+				is highly motivated to find faults<br>
+			
+				<input type="radio" ng-model="q1" name="q1" value="4" ng-change="mainr()">
+				is creative to find the system’s weaknesses<br>
+			</div>
+			</div>
+			<br>
+			<div class="row">
+			<label>2. Beta testing is:</label><br>
+			<div class="radio-inline">
+				<input type="radio" ng-model="q2" name="q2" value="1" ng-change="mainr()">
+				Performed by customers at their own site<br>
+			
+				<input type="radio" ng-model="q2" name="q2" value="2" ng-change="mainr()">
+				Performed by customers at their software developer’s site<br>
+			
+				<input type="radio" ng-model="q2" name="q2" value="3" ng-change="mainr()">
+				Performed by an independent test team<br>
+			
+				<input type="radio" ng-model="q2" name="q2" value="4" ng-change="mainr()">
+				Useful to test bespoke software<br>
+				
+				<input type="radio" ng-model="q2" name="q2" value="5" ng-change="mainr()">
+				Performed as early as possible in the lifecycle<br>
+			</div>
+			</div>
+			<br>
+			<div class="row">
+			<label>3. Which of the following is NOT a black box technique:</label><br>
+			<div class="radio-inline">
+				<input type="radio" ng-model="q3" name="q3" value="1" ng-change="mainr()">
+				Equivalence partitioning<br>
+			
+				<input type="radio" ng-model="q3" name="q3" value="2" ng-change="mainr()">
+				State transition testing<br>
+			
+				<input type="radio" ng-model="q3" name="q3" value="3" ng-change="mainr()">
+				Linear code sequence and jump<br>
+			
+				<input type="radio" ng-model="q3" name="q3" value="4" ng-change="mainr()">
+				Syntax testing<br>
+				
+				<input type="radio" ng-model="q3" name="q3" value="5" ng-change="mainr()">
+				Boundary value analysis<br>
+			</div>
+			</div>
+			<br>
+			<div class="row">
+			<label>4. Which of the following is NOT a static testing technique:</label><br>
+			<div class="radio-inline">
+				<input type="radio" ng-model="q4" name="q4" value="1" ng-change="mainr()">
+				Error guessing<br>
+			
+				<input type="radio" ng-model="q4" name="q4" value="2" ng-change="mainr()">
+				Walkthrough<br>
+			
+				<input type="radio" ng-model="q4" name="q4" value="3" ng-change="mainr()">
+				Data flow analysis<br>
+				
+				<input type="radio" ng-model="q4" name="q4" value="4" ng-change="mainr()">
+				Inspections<br>
+			</div>
+			</div>
+			<br>
+			<div class="row">
+			<label>5. Verification is:</label><br>
+			<div class="radio-inline">
+				<input type="radio" ng-model="q5" name="q5" value="1" ng-change="mainr()">
+				Checking that we are building the right system<br>
+			
+				<input type="radio" ng-model="q5" name="q5" value="2" ng-change="mainr()">
+				Checking that we are building the system right<br>
+			
+				<input type="radio" ng-model="q5" name="q5" value="3" ng-change="mainr()">
+				Performed by an independent test team<br>
+			
+				<input type="radio" ng-model="q5" name="q5" value="4" ng-change="mainr()">
+				Making sure that it is what the user really wants<br>
+			</div>
+			</div>
+			<br>
+			<div class="row">
+			<label>6. Which of the following is a major task of test planning:</label><br>
+			<div class="radio-inline">
+				<input type="radio" ng-model="q6" name="q6" value="1" ng-change="mainr()">
+				Determining the test approach<br>
+			
+				<input type="radio" ng-model="q6" name="q6" value="2" ng-change="mainr()">
+				Preparing test specifications<br>
+			
+				<input type="radio" ng-model="q6" name="q6" value="3" ng-change="mainr()">
+				Evaluating exit criteria and reporting<br>
+			
+				<input type="radio" ng-model="q6" name="q6" value="4" ng-change="mainr()">
+				Measuring and analyzing results<br>
+			</div>
+			</div>
+			<br>
+			<div class="row">
+			<label>7. Test harness is a:</label><br>
+			<div class="radio-inline">
+				<input type="radio" ng-model="q7" name="q7" value="1" ng-change="mainr()">
+				A high level document describing the principles, approach and major objectives of the organization regarding testing<br>
+			
+				<input type="radio" ng-model="q7" name="q7" value="2" ng-change="mainr()">
+				A distance set of test activities collected into a manageable phase of a project<br>
+			
+				<input type="radio" ng-model="q7" name="q7" value="3" ng-change="mainr()">
+				A test environment comprised of stubs and drives needed to conduct a test<br>
+			
+				<input type="radio" ng-model="q7" name="q7" value="4" ng-change="mainr()">
+				A set of several test cases for a component or system under test<br>
+			</div>
+			</div>
+			<br>
+			<div class="row">
+			<label>8. What is the purpose of test completion criteria in a test plan:</label><br>
+			<div class="radio-inline">
+				<input type="radio" ng-model="q8" name="q8" value="1" ng-change="mainr()">
+				To know when a specific test has finished its execution<br>
+			
+				<input type="radio" ng-model="q8" name="q8" value="2" ng-change="mainr()">
+				To ensure that the test case specification is complete<br>
+			
+				<input type="radio" ng-model="q8" name="q8" value="3" ng-change="mainr()">
+				To set the criteria used in generating test inputs<br>
+			
+				<input type="radio" ng-model="q8" name="q8" value="4" ng-change="mainr()">
+				To know when test planning is complete<br>
+				
+				<input type="radio" ng-model="q8" name="q8" value="5" ng-change="mainr()">
+				To plan when to stop testing<br>
+			</div>
+			</div>
+			<br>
+			<div class="row">
+			<label>9. Which of the following is not part of performance testing:</label><br>
+			<div class="radio-inline">
+				<input type="radio" ng-model="q9" name="q9" value="1" ng-change="mainr()">
+				Measuring response time<br>
+			
+				<input type="radio" ng-model="q9" name="q9" value="2" ng-change="mainr()">
+				Measuring transaction rates<br>
+			
+				<input type="radio" ng-model="q9" name="q9" value="3" ng-change="mainr()">
+				Recovery testing<br>
+			
+				<input type="radio" ng-model="q9" name="q9" value="4" ng-change="mainr()">
+				Simulating many users<br>
+				
+				<input type="radio" ng-model="q9" name="q9" value="5" ng-change="mainr()">
+				Generating many transactions<br>
+			</div>
+			</div>
+			<br>
+			<div class="row">
+			<label>10. Equivalence partitioning is:</label><br>
+			<div class="radio-inline">
+				<input type="radio" ng-model="q0" name="q0" value="1" ng-change="mainr()">
+				A black box testing technique used only by developers<br>
+			
+				<input type="radio" ng-model="q0" name="q0" value="2" ng-change="mainr()">
+				A black box testing technique than can only be used during system testing<br>
+			
+				<input type="radio" ng-model="q0" name="q0" value="3" ng-change="mainr()">
+				A black box testing technique appropriate to all levels of testing.<br>
+			
+				<input type="radio" ng-model="q0" name="q0" value="4" ng-change="mainr()">
+				A white box testing technique appropriate for component testing<br>
+			</div>
+			</div>
+			<input type="submit" class="btn btn-default btn-primary" ng-click="test()">
+			</form>
+		</div>     
+		
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-show="crpr" style="padding:70px; opacity:0.9; background-color:#ffffff">
+          <h1 class="page-header">Rating : {{rating}}.0</h1>
+          <h2 class="sub-header" ng-show="offer === 0 && cr_pro_duration === 0">You have no current project and new offer as of now. Please wait.</h2>
+          <!-- <div class="row" style="padding:5px 5px 5px 5px;border: solid #337AB7  1px;"> -->
+			<h2 class="text-center">{{cr_pro_name}}</h2> 
+			<div class="row" style="margin:5px 0 0 0;">
+			<div class="row" style="border: solid #337AB7  1px;padding:5px 5px 5px 5px;">
+			<table class="table">
+			<tr><td>{{cr_pro_desc}}</td></tr>
+			<tr><td><label>Duration: </label> {{cr_pro_duration}} weeks</td></tr>
+			<tr><td><label>Testing Type: </label> {{cr_pro_test_type}}</td></tr>
+			<tr><td><label>App Location: </label> {{cr_pro_pro_loc}}</td></tr>
+			<tr><td><label>Report Location: </label> {{cr_pro_rep_loc}}</td></tr>
+			</table>
+			</div>
+			</div>
+			
+			<div class="row" style="margin:5px 0 0 0;">
+			<div class="row" style="border: solid #337AB7  1px;">
+			<div class="row h1 text-center">Past Bugs</div>
+			<table class="table table-hover table-striped">
+			<tr>
+			<td>Date</td>
+			<td>No.of Bugs</td>
+			<td>Bug Description</td>
+			</tr>
+			<tr ng-repeat="id in details">
+			<td>{{id.date.substr(0,10)}}</td>
+			<td>{{id.numofbugs}}</td>
+			<td>{{id.bugdescription}}</td>
+			</tr>
+			</table>
+			<div class="row h1 text-center">New Bugs</div>
+			<form name="bugForm" class="form-horizontal" style="margin:0 0 0 20px" novalidate>{{bugForm.$valid}}
+			<div class="form-group" ng-class="{'has-error': (bugForm.submitted || bugForm.bugs_no.$touched || bugForm.bugs_no.$dirty) && bugForm.bugs_no.$invalid,
+										'has-success': (bugForm.bugs_no.$touched || bugForm.bugs_no.$dirty) && bugForm.bugs_no.$valid }">
+			<label>No. Of Bugs: </label><br><input type="text" name="bugs_no" ng-model="bug.bugs_no" class="form-control" style="width:20%" ng-pattern="/^[0-9]{1,2}$/" required>
+			<span class=" help-block glyphicon glyphicon-exclamation-sign" ng-show="(bugForm.submitted || bugForm.bugs_no.$touched || bugForm.bugs_no.$dirty) && bugForm.bugs_no.$error.required">Description Required</span>
+			<span class="help-block glyphicon glyphicon-exclamation-sign" ng-show="bugForm.bugs_no.$error.pattern">Pattern is wrong.</span>
+			</div>
+					
+			<div class="form-group" ng-class="{'has-error': (bugForm.submitted || bugForm.bugs_desc.$touched || bugForm.bugs_desc.$dirty) && bugForm.bugs_desc.$invalid,
+										'has-success': (bugForm.bugs_desc.$touched || bugForm.bugs_desc.$dirty) && bugForm.bugs_desc.$valid }">
+			<label>Bug Description: </label><br><textarea  name="bugs_desc" ng-model="bug.bugs_desc" class="form-control" ng-maxlength="100" style="width:20%" required></textarea>
+			<span class=" help-block glyphicon glyphicon-exclamation-sign" ng-show="(bugForm.submitted || bugForm.bugs_desc.$touched || bugForm.bugs_desc.$dirty) && bugForm.bugs_desc.$error.required">Description Required</span>
+			<span class="help-block glyphicon glyphicon-exclamation-sign" ng-show="bugForm.bugs_desc.$error.maxlength">Description should not be greater than 100 characters.</span>
+			</div>
+			
+			<div class="form-group">
+			<button type="button" class="btn btn-default btn-primary " ng-click="rep_bug()" ng-disabled="bugForm.$invalid">Submit</button>
+			<!-- <input type="file"><br> -->
+			</div>
+			</form>
+			</div>
+			</div>
+		</div>     
+	
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"  style="opacity:0.9; background-color:#ffffff" ng-show="nwpr">
+          	<h1 class="page-header">Rating : {{rating}}.0</h1>
+          
+        	<div class="row" style="padding:5px 5px 5px 5px;border: solid #337AB7  1px;">
+			<label>Project Name:</label> {{nw_pro_name}}
+			</div>
+			
+			<div class="row" style="margin:5px 0 0 0;">
+			<div class="row" style="border: solid #337AB7  1px;padding:5px 5px 5px 5px;">
+			<label>Project Description:</label>{{nw_pro_desc}}
+			</div>
+			</div>
+			
+			<div class="row" style="margin:5px 0 0 0;">
+			<div class="row" style="border: solid #337AB7  1px;">
+			<table class="table">
+			<tr>
+			<td><label>Duration: </label> {{nw_pro_duration}} weeks</td>
+			<td><label>Testing Type: </label> {{nw_pro_test_type}}</td>
+			<td><label>App Developer Email: </label> {{nw_pro_apmail}}</td>	
+			</tr>
+			</table>
+			</div>
+			</div>
+			
+			<div class="row" style="margin:5px 0 0 0;">
+			<div class="row" style="border: solid #337AB7  1px;">
+			<div class="row h1 text-center">Offer</div>
+			<table class="table">
+			<tr>
+			<td><button type="button" class="btn btn-default btn-success btn-lg btn-block" ng-click="nwpr_acc()">Accept</button></td>
+			<td><button type="button" class="btn btn-default btn-danger btn-success btn-lg btn-block" ng-click="nwpr_rej()">Reject</button></td>
+			</tr>
+			</table>
+			</div>
+			</div>
+			</div>
+
+		<div class="col-sm-9 col-sm-offset-3 col-md-5 col-md-offset-2 main" style=" margin:5% 30% 0 30%;opacity:0.9; background-color:#ffffff" ng-show="blrw">
+          <h1 class="page-header">Rating : {{rating}}.0</h1>
+            <div class="table-responsive">
+            <table class="table">
+            <tr>
+            	<td><label>Project Name</label></td>
+            	<td><label><span  class="pull-right">Pay</span></label></td>
+            </tr>
+            <tr ng-repeat="id in paydet">
+            	<td>{{id.app_name}}</td>
+            	<td><span  class="pull-right">{{id.pay}}</span></td>
+            </tr>
+          	</table>
+          </div>
+		</div>     
+		
+		<div class="col-sm-9 col-sm-offset-3 col-md-5 col-md-offset-2 main" style="margin:2% 0 0 35%;opacity:0.9; background-color:#ffffff" ng-show="prof">
+          <h1 class="page-header">Rating : {{rating}}.0</h1>
+          <div class="table-responsive">
+            <table class="table">
+            <tr><td><label>Email: </label><span  class="pull-right"> {{profile_email}}</span></td></tr>
+            <tr><td><label>First Name: </label><span  class="pull-right"> {{profile_fname}}</span> </td></tr>
+            <tr><td><label>Middle Name: </label><span  class="pull-right"> {{profile_mname}}</span></td></tr>
+            <tr><td><label>Last Name: </label><span  class="pull-right"> {{profile_lname}}</span></td></tr>
+            <tr><td><label>Date of Birth: </label><span  class="pull-right"> {{profile_dob}}</span></td></tr>
+            <tr><td><label>Gender: </label><span  class="pull-right"> {{profile_gender}}</span></td></tr>
+            <tr><td><label>Address Line 1: </label><span  class="pull-right"> {{profile_adln1}}</span></td></tr>
+            <tr ng-hide="profile_adln2 === 'null' || profile_adln2 === 'undefined'"><td><label>Address Line 2: </label><span  class="pull-right"> {{profile_adln2}}</span></td></tr>
+            <tr><td><label>City: </label><span  class="pull-right"> {{profile_city}}</span></td></tr>
+            <tr><td><label>State: </label><span  class="pull-right"> {{profile_state}}</span></td></tr>
+            <tr><td><label>Country: </label><span  class="pull-right"> {{profile_country}}</span></td></tr>
+            <tr><td><label>Contact: </label><span  class="pull-right"> {{profile_contact}}</span></td></tr>
+            <tr><td><label>Skype: </label><span  class="pull-right"> {{profile_skype}}</span></td></tr>
+            <tr ng-hide="profile_pl1 === 'null'"><td><label>Testing Platform: </label><span  class="pull-right"><span  class="pull-right"> {{profile_pl1}}</span></td></tr>
+            <tr ng-hide="profile_pl2 === 'null'"><td><label>Testing Platform: </label><span  class="pull-right"> {{profile_pl2}}</span></td></tr>
+            <tr ng-hide="profile_pl3 === 'null'"><td><label>Testing Platform: </label><span  class="pull-right"> {{profile_pl3}}</span></td></tr>
+            <tr ng-hide="profile_ty1 === 'null'"><td><label>Testing Type: </label><span  class="pull-right"> {{profile_ty1}}</span></td></tr>
+            <tr ng-hide="profile_ty2 === 'null'"><td><label>Testing Type: </label><span  class="pull-right"> {{profile_ty2}}</span></td></tr>
+            <tr ng-hide="profile_ty3 === 'null'"><td><label>Testing Type: </label><span  class="pull-right"> {{profile_ty3}}</span></td></tr>
+            <tr ng-hide="profile_ty4 === 'null'"><td><label>Testing Type: </label><span  class="pull-right"> {{profile_ty4}}</span></td></tr>
+            <tr ng-hide="profile_ty5 === 'null'"><td><label>Testing Type: </label><span  class="pull-right"> {{profile_ty5}}</span></td></tr>
+          	</table>
+          </div>
+		</div>   
+		
+<!-- 		<div class="col-sm-9 col-sm-offset-3 col-md-5 col-md-offset-2 main" style="position:absolute;height:20px;bottom:0;width: 100%;">
+      		<footer class="" style="bottom:0">
+    <nav>
+        <div class="container fivecolumns">
+            <div class="row">
+                    <div class="col-xs-2">
+                        <ul>
+                            <li>I want</li>
+                            <li><a href="/en/functional-testing">Functional testing</a></li>
+                            <li><a href="/en/usability-testing">Usability testing</a></li>
+                            <li><a href="/en/localization-testing">Localization testing</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-2">
+                        <ul>
+                            <li>For a</li>
+                            <li><a href="/en/website-testing">Website</a></li>
+                            <li><a href="/en/ios-testing">iOS Application</a></li>
+                            <li><a href="/en/android-testing">Android Application</a></li>
+                            <li><a href="/en/software-quality-assurance">Mac or PC software</a></li>
+                            <li><a href="/en/game-testing">Video game</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-2">
+                        <ul>
+                            <li>How to start</li>
+                            <li><a href="/en/software-testing-services">What you get</a></li>
+                            <li><a href="/en/software-testing-process">How it works</a></li>
+                            <li><a href="/en/software-testing-cost">Pricing</a></li>
+                            <li><a href="/en/client-registration">Sign up</a></li>
+                            <li><a href="/en/software-testing-questions">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-2">
+                        <ul>
+                            <li>About us</li>
+                            <li><a href="/en/crowdsourcing-platform">Story</a></li>
+                            <li><a href="/en/crowdsourced-software-testing-management">Management</a></li>
+                            <li><a href="/en/contact-crowdsourced-testing">Contact us</a></li>
+                            <li><a href="https://crowdsourcedtesting.com/resources/" target="_blank">Resources</a></li>
+                            <li><a href="https://leantesting.com/" target="_blank">Free bug tracker</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-2">
+                        <ul>
+                            <li>The community</li>
+                            <li><a target="_blank" href="https://www.facebook.com/CrowdsourcedTesting">Facebook</a></li>
+                            <li><a target="_blank" href="https://www.linkedin.com/company/crowdsourced-testing-co-">LinkedIn</a></li>
+                            <li><a target="_blank" href="https://twitter.com/crowdsourcingqa">Twitter</a></li>
+                            <li><a target="_blank" href="https://plus.google.com/+Crowdsourcedtesting" rel="publisher">Google+</a></li>
+                            <li><a target="_blank" href="https://www.pinterest.com/crowdsourced/">Pinterest</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    </nav>
+    <div class="bg">
+        <div class="container">
+            <p>Crowdsourced Testing SpA © All rights reserved.</p>
+        </div>
+    </div>
+</footer> 
+
+</div>-->
+<!-- <nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+    <p>Crowdsourced Testing SpA © All rights reserved.</p>
+  </div>
+</nav> -->
+
+		</div>     
+      </div>
+   </div>
+   
+  </body>
+  <script type="text/javascript">
+
+var app = angular.module('mtaas', []);
+
+app.controller('mtaas', ['$scope','$http','$window',function ($scope,$http,$window)  {
+	
+	$scope.home1 = true;
+	$scope.opts = false;
+	$scope.crpr = false;
+	$scope.nwpr = false;
+	$scope.blrw = false;
+	
+	
+	$http({
+	  		method: 'GET',
+	 		url: '/checkLogin'
+	 }).
+then(function(response)
+	{
+//		alert(response.data.status);
+	  	if (response.data.status == 200)
+	  		{
+	  		
+	//  			alert("ankit");
+	  			$scope.first_name=response.data.fname;
+	 // 			alert($scope.first_name);
+	  			$scope.last_name=response.data.lname;
+				$scope.emailid=response.data.mail;
+				$scope.rating = response.data.rating;
+				$scope.offer = response.data.offer;
+				$scope.status1 = response.data.status1;
+			}
+	  	
+	 });
+	
+	$scope.ustp = function()
+	{
+
+alert("ankit");
+	}
+	
+	$scope.ho_me = function (){
+		$scope.home1 = true;
+		$scope.opts = false;
+		$scope.crpr = false;
+		$scope.nwpr = false;
+		$scope.blrw = false;
+		$scope.prof = false;
+		
+	}
+	
+	$scope.op_ts = function (){
+		$scope.opts = true;
+		$scope.crpr = false;
+		$scope.nwpr = false;
+		$scope.blrw = false;
+		$scope.home1 = false;
+		$scope.prof = false;
+	}
+	
+	$scope.cr_pr = function (){
+		//alert("jhsdfkjshFDKJHS");
+		$http({
+			method: 'POST',
+			url: '/curpro',
+			data: {"email":$scope.emailid}
+		}).
+			then(function(response){
+				//alert("After fetching desc");
+
+						$scope.opts = false;
+						$scope.crpr = true;
+						$scope.nwpr = false;
+						$scope.blrw = false;
+						$scope.home1 = false;
+						$scope.prof = false;
+						
+						$scope.cr_pro_id = response.data.results[0]["project_id"];
+						$scope.cr_pro_desc = response.data.results[0]["description"];
+						$scope.cr_pro_duration =response.data.results[0]["Project_duration"];
+						$scope.cr_pro_name =response.data.results[0]["app_name"];
+						$scope.cr_pro_test_type = response.data.results[0]["project_testing_type"];
+						$scope.cr_pro_pro_loc = response.data.results[0]["project_access_area"];
+						$scope.cr_pro_rep_loc = response.data.results[0]["report_access_area"];
+						$scope.details = response.data.results1;
+						//alert($scope.appdesc1);
+			});
+	}
+	
+	$scope.nw_pr = function (){
+		$scope.opts = false;
+		$scope.crpr = false;
+		$scope.nwpr = true;
+		$scope.blrw = false;
+		$scope.home1 = false;
+		$scope.prof = false;
+		$http({
+  	  		method: 'POST',
+  	 		url: '/newpro',
+  	 		data: {"email":$scope.emailid}
+    	 }).
+    	then(function(response)
+    	{
+//    		alert(response.data.results);
+//    		alert(response.data.results[0]["project_id"]);
+    		$scope.nw_pro_name = response.data.results[0]["app_name"];
+    		$scope.nw_pro_desc = response.data.results[0]["description"];
+    		$scope.nw_pro_duration = response.data.results[0]["project_duration"];
+    		$scope.nw_pro_test_type = response.data.results[0]["project_testing_type"];
+			$scope.nw_pro_pid = response.data.results[0]["project_id"];
+			$scope.nw_pro_apmail = response.data.results[0]["ad_email"];
+    	})
+	
+	}
+	
+	$scope.bl_rw = function (){
+		$scope.opts = false;
+		$scope.crpr = false;
+		$scope.nwpr = false;
+		$scope.blrw = true;
+		$scope.home1 = false;
+		$scope.prof = false;
+		$http({
+  	  		method: 'POST',
+  	 		url: '/bilpay',
+  	 		data: {"email":$scope.emailid}
+    	 }).
+    	then(function(response)
+    	{
+    		$scope.paydet = response.data.results;
+    	})
+	}
+	
+	$scope.nwpr_acc = function (){
+		
+//		alert("ankit");
+		$http({
+	  	  		method: 'POST',
+	  	 		url: '/nwpr_dec',
+	  	 		data: {"dec":"A","email":$scope.emailid,"pid":$scope.nw_pro_pid,"fname":$scope.first_name,"lname":$scope.last_name}
+	    	 }).
+	    	then(function(response)
+	    	{
+	    		$window.location.href = '/tr_dashboard';
+	    	})
+
+	}
+	
+	$scope.nwpr_rej = function (){
+//	alert("ankit");
+	$http({
+			method: 'POST',
+			url: '/nwpr_dec',
+			data: {"dec":"R","email":$scope.emailid,"pid":$scope.nw_pro_pid}
+	 }).
+	then(function(response)
+	{
+		$window.location.href = '/tr_dashboard';
+	})
+	
+	}
+	
+	$scope.pro_file = function (){
+		
+/* 		alert("ankit"); */
+		$http({
+				method: 'POST',
+				url: '/profil',
+				data: {"email":$scope.emailid}
+		 }).
+		then(function(response)
+		{
+			$scope.profile_email = response.data.results[0]["email"];
+			$scope.profile_fname = response.data.results[0]["first_name"];
+			$scope.profile_mname = response.data.results[0]["middle_name"];
+			$scope.profile_lname = response.data.results[0]["last_name"];
+			$scope.profile_dob = response.data.results[0]["dob"].substr(0,10);
+			if (response.data.results[0]["sex"] === 'm')
+				{
+				$scope.profile_gender = "Male";	
+				}
+			else
+				{
+				$scope.profile_gender = "Female";
+				}
+			$scope.profile_adln1 = response.data.results[0]["address_line1"];
+			$scope.profile_adln2 = response.data.results[0]["address_line2"];
+			$scope.profile_city = response.data.results[0]["city"];
+			$scope.profile_state = response.data.results[0]["state"];
+			$scope.profile_country = response.data.results[0]["country"];
+			$scope.profile_contact = response.data.results[0]["phone_no"];
+			$scope.profile_skype = response.data.results[0]["skype_id"];
+			$scope.profile_pl1 = response.data.results[0]["platform_android"];
+			$scope.profile_pl2 = response.data.results[0]["platform_ios"];
+			$scope.profile_pl3 = response.data.results[0]["platform_windows"];
+			$scope.profile_ty1 = response.data.results[0]["testing_ty_functional"];
+			$scope.profile_ty2 = response.data.results[0]["testing_ty_laboratory"];
+			$scope.profile_ty3 = response.data.results[0]["testing_ty_performance"];
+			$scope.profile_ty4 = response.data.results[0]["testing_ty_memorylk"];
+			$scope.profile_ty5 = response.data.results[0]["testing_ty_interrupt"];
+			$scope.opts = false;
+			$scope.crpr = false;
+			$scope.nwpr = false;
+			$scope.blrw = false;
+			$scope.home1 = false;
+			$scope.prof = true;
+		})
+		
+	}
+	
+	
+	$scope.log_out = function (){
+		$http({
+	  	  		method: 'POST',
+	  	 		url: '/logout',
+	    	 }).
+	    	then(function(response)
+	    	{
+	    		$window.location.href = '/';
+	    	})
+	}
+	
+	$scope.rep_bug = function (){
+		alert("bnm,Sc,mbn,m");
+		$http({
+	  	  		method: 'POST',
+	  	 		url: '/repbug',
+	  	 		data: {"email":$scope.emailid,"pid":$scope.cr_pro_id,"bug":$scope.bug}
+	    	 }).
+	    	then(function(response)
+	    	{
+	    		$window.location.href = '/tr_dashboard';
+	    	})
+	}
+	
+	$scope.test = function (){
+		var score = 0;
+		if($scope.q1 === "2"){
+			score = score + 1;
+		}
+		if($scope.q2 === "1"){
+			score = score + 1;
+		}
+		if($scope.q3 === "3"){
+			score = score + 1;
+		}
+		if($scope.q4 === "1"){
+			score = score + 1;
+		}
+		if($scope.q5 === "2"){
+			score = score + 1;
+		}
+		if($scope.q6 === "1"){
+			score = score + 1;
+		}
+		if($scope.q7 === "3"){
+			score = score + 1;
+		}
+		if($scope.q8 === "5"){
+			score = score + 1;
+		}
+		if($scope.q9 === "3"){
+			score = score + 1;
+		}
+		if($scope.q0 === "3"){
+			score = score + 1;
+		}				
+//		alert(score);
+		
+		$http({
+  	  		method: 'POST',
+  	 		url: '/test',
+  	 		data: {"score":score,"email":$scope.emailid}
+    	 }).
+    	then(function(response)
+    	{
+    		$window.location.href = '/tr_dashboard';
+    	})
+	}
+	
+}]);
+
+</script>
+</html>

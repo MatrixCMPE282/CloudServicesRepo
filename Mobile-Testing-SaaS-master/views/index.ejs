@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<style type="text/css">
+	
+
+    body {
+        position: absolute;
+        top: 0; bottom: 0; left: 0; right: 0;
+        height: 100%;
+    }
+    body:before {
+        content: "";
+        position: absolute;
+        height: 20%; width: 20%;
+        background: url("./images/107753.jpg");
+        background-size: cover;
+        z-index: -1; /* Keep the background behind the content */
+        
+        /* don't forget to use the prefixes you need */
+        -webkit-transform: scale(5);
+        -webkit-transform-origin: top left;
+        -webkit-filter: blur(1px);
+        -moz-transform: scale(5);
+        -moz-transform-origin: top left;
+        -moz-filter: blur(1px)
+    }
+
+.has-error .help-block{
+	color:red;
+}
+
+.has-error .form-control{
+	border:1px solid red;
+}
+
+</style>
+	<title></title>
+</head>
+<body ng-app="mtaas" data-ng-controller="mtaas">
+<div class="container">
+	<div class="col-md-4" style="top:45%;left:35%;position:absolute;">
+
+<form name="signinForm" ng-submit="signinForm.$valid && signin()" novalidate>
+	<div class="form-group" ng-class="{'has-error': (signinForm.submitted || signinForm.email.$touched || signinForm.email.$dirty) && signinForm.email.$invalid,
+										'has-success': (signinForm.email.$touched || signinForm.email.$dirty) && signinForm.email.$valid, 
+										'has-feedback': (signinForm.email.$touched || signinForm.email.$dirty) && signinForm.email.$valid}">
+		<div class="input-group">
+		  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-envelope" ></span></span>
+		  <input type="email" name="email" data-ng-model="user.email" class="form-control" placeholder="Email" aria-describedby="basic-addon1" required>
+		</div>
+		<span class="help-block glyphicon glyphicon-exclamation-sign" ng-show="(signinForm.submitted || signinForm.email.$touched || signinForm.email.$dirty) && signinForm.email.$error.required">Email Required</span>
+		<span class="help-block glyphicon glyphicon-exclamation-sign" ng-show="(signinForm.email.$touched || signinForm.email.$dirty) && signinForm.email.$error.email">Invalid Email Address</span>
+		<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="(signinForm.email.$touched || signinForm.email.$dirty) && signinForm.email.$valid"></span>
+	</div>
+
+	<div class="form-group" ng-class="{'has-error': (signinForm.submitted || signinForm.password.$touched || signinForm.password.$dirty) && signinForm.password.$invalid,
+										'has-success': (signinForm.password.$touched || signinForm.password.$dirty) && signinForm.password.$valid,
+										'has-feedback': (signinForm.password.$touched || signinForm.password.$dirty) && signinForm.password.$valid }">
+		<div class="input-group">
+		  <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-eye-open"></span></span>
+		  <input type="password" name="password" data-ng-model="user.password" class="form-control" placeholder="password" aria-describedby="basic-addon2" required>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<button class="btn btn-default btn-primary" style="width:50%;margin:0 0 0 25%" ng-click="signinForm.submitted = true"><span class="glyphicon glyphicon-log-in"></span></button>
+	</div>
+
+	<div class="form-goup">
+		<a href="#" ng-click="usignup()" style="margin:0 0 0 35%;color:white">Register as New User</a>
+	</div>
+</form>
+	</div>
+
+</div>
+</body>
+
+<script type="text/javascript">
+	
+	
+var app = angular.module('mtaas', []);
+
+app.controller('mtaas', ['$scope','$http','$window',function ($scope,$http,$window)  {
+	$http({
+	  		method: 'GET',
+	 		url: '/checkLogin'
+	 }).
+then(function(response)
+	{
+	  	if (response.data.status == 200)
+	  		{
+//	  			alert(response.data.fname);
+	  		/* 	$scope.first_name=response.data.fname;
+	  			$scope.last_name=response.data.lname;
+					$scope.emailid=response.data.mail;
+					$scope.rating = response.data.rating;
+					alert(rating); */
+ 	  			if(response.data.type === 'T')
+	  				{	
+    	  				$window.location.href = '/tr_dashboard';
+	  				}
+	  			else
+	  				{	
+    	  				$window.location.href = '/ap_dashboard';
+	  				} 
+			}
+	  	
+	 });
+	
+	
+	
+	$scope.signin = function (){
+		/* alert($scope.user); */
+		var user = $scope.user;
+	//	alert($scope.password);
+		//if ($scope.signon === "tr_signon")
+		//	{
+				$http({
+		      	  		method: 'POST',
+		      	 		url: '/signin',
+		      	 		data: {"user":user}
+		        	 }).
+		        then(function(response)
+		        	{
+		        	//alert(email);
+		        	  	if (response.data.status == 200)
+							{
+			        	 	//	$scope.username=response.data.name;
+			        	 	//	$scope.ademailid=response.data.email;
+			        	 	//	$scope.main=true;
+			        	 	//	$scope.adwelcome=true;
+			        	 		//$scope.searchpetshow=false;
+			        	// 		$scope.USER_TYPE=response.data.results.USER_TYPE;
+			        	       var details=angular.fromJson(response.data.results);
+			   //     	       alert(details[0]["user_type"]);
+			        	       
+			        	       var USER_TYPE=details[0]["user_type"];
+			        	 		if(USER_TYPE==='T'){
+			        	 		$window.location.href = '/tr_dashboard';
+			        	 		}
+			        	 		else{
+			        	 		$window.location.href = '/ap_dashboard';
+			        	 		}
+							}
+		        	  	else
+		        			{
+			        			alert("Invalid Usernme or Password"); 
+		        		  	}
+		        	 }); 
+		    //  }
+	        	
+	         
+	}
+	
+	
+   $scope.usignup = function (){
+	        	  $window.location.href = '/snupform';
+}	
+
+
+}]);
+
+</script>
+</html>

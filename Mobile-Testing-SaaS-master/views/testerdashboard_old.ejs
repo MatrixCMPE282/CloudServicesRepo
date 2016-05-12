@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<script src="https://rawgit.com/ghostbar/angular-file-model/master/angular-file-model.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+  
+  <style>
+  
+  .list-header{
+  background-image: -webkit-linear-gradient(top, #80D8EE, #38BDE0);
+  background-image: -moz-linear-gradient(top, #80D8EE, #38BDE0);
+  background-image: -ms-linear-gradient(top, #80D8EE, #38BDE0);
+  background-image: -o-linear-gradient(top, #80D8EE, #38BDE0);
+  background-image: linear-gradient(top, #80D8EE, #38BDE0);
+  color: white;
+  }
+  
+      html,body{width:100%;
+      height:100%;
+    font-family:  'Lucida Grande/Tahoma', Helvetica/Roboto;
+}
+.logo i {
+    font-size: 31px;
+    margin-right: 4px;
+    word-spacing: 14px;
+}
+.logo{
+    color: #F68428;
+    margin: 0;
+    font-size: 31px;
+    padding: 4px 0;
+    padding-bottom: 15px;
+
+}
+.login-bottom-text{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 12px;
+    color:#9DACCB;
+    line-height: 19px;
+}
+
+header{
+    background: #3b5998;
+    padding-top: 20px;
+}
+header .form-group{
+    margin-bottom: 0px;
+}
+header .btn-header-login{
+    margin-bottom: 15px;    
+}
+.login-text {
+  
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+  
+  -webkit-box-shadow: 0px 0px 0px #a4e388;
+  -moz-box-shadow: 0px 0px 0px #a4e388;
+  box-shadow: 0px 0px 0px #a4e388;
+  
+  border: solid #70D2EB  1px;
+  width:250px;
+  height:29px;
+}
+
+.search-text {
+  
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+  
+  -webkit-box-shadow: 0px 0px 0px #a4e388;
+  -moz-box-shadow: 0px 0px 0px #a4e388;
+  box-shadow: 0px 0px 0px #a4e388;
+  
+  border: solid #70D2EB  1px;
+  width:180px;
+  height:29px;
+}
+
+.login-btn {
+margin: -4px 0px 0px 20px;
+padding: 1px 0px 1px 0px;
+   background: #70D2EB;
+  background-image: -webkit-linear-gradient(top, #70D2EB, #70D2EB);
+  background-image: -moz-linear-gradient(top, #70D2EB, #70D2EB);
+  background-image: -ms-linear-gradient(top, #70D2EB, #70D2EB);
+  background-image: -o-linear-gradient(top, #70D2EB, #70D2EB);
+  background-image: linear-gradient(to bottom, #70D2EB, #70D2EB);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 6px;
+  text-shadow: 0px 1px 0px #898a88;
+  -webkit-box-shadow: 0px 0px 0px #a4e388;
+  -moz-box-shadow: 0px 0px 0px #a4e388;
+  box-shadow: 0px 0px 0px #a4e388;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  border: solid #1d2a5b  1px;
+  width:160px;
+  height:29px;
+}
+.login-btn:hover {
+  background: #637BAD;
+  background-image: -webkit-linear-gradient(top, #637BAD, #5973A8);
+  background-image: -moz-linear-gradient(top, #637BAD, #5973A8);
+  background-image: -ms-linear-gradient(top, #637BAD, #5973A8);
+  background-image: -o-linear-gradient(top, #637BAD, #5973A8);
+  background-image: linear-gradient(to bottom, #637BAD, #5973A8);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 6px;
+  text-shadow: 0px 1px 0px #898a88;
+  -webkit-box-shadow: 0px 0px 0px #a4e388;
+  -moz-box-shadow: 0px 0px 0px #a4e388;
+  box-shadow: 0px 0px 0px #a4e388;
+  font-family: Arial;
+  color: #f3ffff;
+  font-size: 13px;
+  
+  border: solid #1d2a5b  1px;
+  text-decoration: none;
+}
+.login-main{
+    margin-top: 130px;
+}
+.multibox{
+    padding-left: 0px;
+    padding-bottom: 10px;
+}
+.login-main span{
+    font-size: 12px;
+} 
+#wrap{
+background-image: -ms-linear-gradient(top, #FFFFFF 0%, #D3D8E8 100%);
+/* Mozilla Firefox */ 
+background-image: -moz-linear-gradient(top, #FFFFFF 0%, #D3D8E8 100%);
+/* Opera */ 
+background-image: -o-linear-gradient(top, #FFFFFF 0%, #D3D8E8 100%);
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #D3D8E8));
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #D3D8E8 100%);
+/* W3C Markup, IE10 Release Preview */ 
+background-image: linear-gradient(to bottom, #FFFFFF 0%, #D3D8E8 100%);
+background-repeat: no-repeat;
+background-attachment: fixed;
+}
+
+strong{
+    color:#141823;
+    font-size:25px;
+    font-weight:bold;
+}
+.signup-btn {
+  background: #79bc64;
+  background-image: -webkit-linear-gradient(top, #79bc64, #578843);
+  background-image: -moz-linear-gradient(top, #79bc64, #578843);
+  background-image: -ms-linear-gradient(top, #79bc64, #578843);
+  background-image: -o-linear-gradient(top, #79bc64, #578843);
+  background-image: linear-gradient(to bottom, #79bc64, #578843);
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+  text-shadow: 0px 1px 0px #898a88;
+  -webkit-box-shadow: 0px 0px 0px #a4e388;
+  -moz-box-shadow: 0px 0px 0px #a4e388;
+  box-shadow: 0px 0px 0px #a4e388;
+  font-family: Arial;
+  color: #f3ffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  border: solid #3b6e22  1px;
+  text-decoration: none;
+  width:250px;
+  height:35px;
+  }
+
+
+.signup-btn:hover {
+  background: #79bc64;
+  background-image: -webkit-linear-gradient(top, #79bc64, #5e7056);
+  background-image: -moz-linear-gradient(top, #79bc64, #5e7056);
+  background-image: -ms-linear-gradient(top, #79bc64, #5e7056);
+  background-image: -o-linear-gradient(top, #79bc64, #5e7056);
+  background-image: linear-gradient(to bottom, #79bc64, #5e7056);
+  text-decoration: none;
+ 
+}
+.navbar-default .navbar-brand{
+        color:#fff;
+        font-size:30px;
+        font-weight:bold;
+    }
+.form .form-control { margin-bottom: 10px; }
+@media (min-width:768px) {
+    #home{
+        margin-top:50px;
+    }
+    #home .slogan{
+        color: #0e385f;
+        line-height: 29px;
+        font-weight:bold;
+    }
+}
+
+footer hr{
+    margin-top: 0px;
+    padding-top: 0px;
+}
+.footer-options ul{
+    clear: both;
+    padding: 0px;
+    margin: 0px;
+}
+.footer-options ul li{
+    float:left;
+    list-style: none;
+    padding: 5px;
+    font-size: 12px;
+}
+.footer-options ul li a{
+    text-decoration: none;
+    color: #000;
+}
+.copyrights{
+    margin-top: 25px;
+}
+
+/* //////////////////////////////////////////////////////////////////////////////////////////
+HEADER
+////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+.header {
+	/*background: url(../images/layout/bg-header-top.jpg) 0 32px no-repeat;*/
+	height: 150px;
+}
+.list-header {
+	
+	width: 100%;
+	height: 23px;
+	margin: 0 0 0 0;
+	padding: 0;
+}
+.list-header li {
+	float: right;
+	display: inline;
+	margin: 4px 20px 0 0;
+}
+.list-header .tagline {
+	float: left;
+	margin: 4px 0 0 30px;
+	padding: 0 0 15px 0;
+}
+.header h1 {
+	float: left;
+	/* background: url(../images/2015/logo.png) no-repeat; */
+	width: 245px;
+	height: 110px;
+	text-indent: -200px;
+	margin: 37px 0 0 0;
+}
+.nav {
+	margin: 0;
+	padding: 0;
+	height: 1em;
+}
+.header .nav {
+	float: right;
+	margin: 35px 0px 0 0;
+}
+.header .nav li {
+	list-style: none;
+	float: left;
+	font-size: 19px;
+}
+.header .nav li a {
+	display: block;
+	padding: 10px 13px;
+	color: #2ba9bd;
+	text-decoration: none;
+}
+.header .nav li ul {
+	display: none;
+	width: 11em; /*width to help Opera out*/
+	background-color: #2ba9bd;
+}
+.header .nav li:hover ul, .header .nav li.hover ul {
+	display: block;
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	z-index: 2000;
+}
+.header .nav li ul li a {
+	font-size: 14px !important;	
+}
+.header .nav li:hover li, .header .nav li.hover li {
+	float: none;
+}
+.header .nav li:hover li a, .header .nav li:hover li a {
+	background-color: #2ba9bd;
+	border-bottom: 1px solid #fff;
+	color: #fff;
+}
+.header .nav li li a:hover {
+	background-color: #16535b;
+}
+
+.wrap-main {
+	width: 1004px;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.mainpage {
+	background-image: -webkit-linear-gradient(top, #E5E5E5, #FFFFFF);
+  	background-image: -moz-linear-gradient(top, #E5E5E5, #FFFFFF);
+  	background-image: -ms-linear-gradient(top, #E5E5E5, #FFFFFF);
+  	background-image: -o-linear-gradient(top, #E5E5E5, #FFFFFF);
+  	background-image: linear-gradient(top, #E5E5E5, #FFFFFF);
+}
+
+.search {	
+	margin: 0 0 0 0;
+	padding: 0 0 0 100px;
+}
+
+.petdet {	
+	margin: 0 0 0 0;
+	padding: 0 0 0 5px;
+	background: #ffffff;
+}
+
+.sidebar {	
+	margin: 8px 0 0 0;
+	padding: 0 0 0 0;
+	position: relative;
+}
+
+.container-fluid{
+padding: 0 0 0 0;
+}
+  </style>
+  </head>
+  
+  <body>
+  	<div ng-app="Mtaas"  data-ng-controller="Mtaas1">
+  		<div class="container-fluid">
+  		<!--/////////////////////////////////////HEADER///////////////////////////////////////////-->
+		      <div class="header">
+        	  <ul class="list-header">
+                <li class="tagline">Search Pets. Adopt Pets. Save Pets.</li>
+                </ul>
+              
+              
+    
+    <div class="row">
+
+        <!-- <div class="col-md-4"> -->
+            <h1>Mobile Cloud Testing</h1>
+      
+      
+        <div class="col-md-6">
+            <div class="row">
+		
+		            <ul class="nav">
+                <li><a  href="#">ABOUT</a>
+				</li>
+
+                <li><a  href="#">PROTECT</a>
+                		<ul>
+                            <li><a href="#">Pet Insurance</a></li>
+                            <li><a href="#">Lost Pet Recovery Services </a></li>
+						</ul>
+				</li>
+                <li><a  href="#">BLOG</a>
+                		<ul>
+                        	<li><a href="#">Health, Behavior, and Other Tips</a></li>
+						</ul>
+				</li>
+				
+                <li><a  href="#">LOOK</a>
+                		<ul>
+                        	<li><a href="#">Facebook Fan Page</a></li>
+						</ul>
+				</li>     
+				         
+				<li class=""><a  href="#"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a>
+                		<ul>
+                			<li><a role="button"  ng-model="selected" href="" ng-click="logout()">Logout</a></li>
+						</ul>
+				</li> 
+				  
+            </ul>
+		
+            </div> 
+           
+        </div>
+    </div>
+    
+            
+        </div><!--end header-->
+
+<!--/////////////////////////////////////HEADER///////////////////////////////////////////-->
+<div class="row" style="background:#70D2EB;"><div class="col-md-1"></div></div>
+	
+<div class="row mainpage">
+  	
+  	<div class="row col-md-12 search" ng-show=true><br></div>
+   
+  	<div class="col-md-3">
+  		<div class="list-group">
+			<div class="form-group">
+			<button type="button" class="list-group-item" ng-click="ho_me()" style="margin:1px 0 0 0">Home</button>
+			
+  			<button type="button" class="list-group-item" ng-click="op_ts()" style="margin:3px 0 0 0" ng-disabled="rating > 0">Optional Test</button>
+
+		  	<button type="button" class="list-group-item" ng-click="cr_pr()" style="margin:3px 0 0 0">Current Project</button>
+
+		   	<button type="button" class="list-group-item" ng-click="nw_pr()" style="margin:3px 0 0 0" ng-disabled="offer === 0">New Projects<span class="badge">{{offer}}</span></button>
+
+  			<button type="button" class="list-group-item" ng-click="bl_rw()" style="margin:3px 0 0 0">Billng & Rewards</button>
+			</div>
+		</div>
+	</div>
+
+<div class="col-md-8" ng-show="home1">
+<div class="row h1 text-center">Welcome {{first_name}} {{last_name}}</div>
+<div class="row h1 text-center">Rating: {{rating}}</div><br>
+<!-- <a href="/files/chann.pdf" target="_blank" download>jhhjhjjh</a> -->
+</div>
+<div class="col-md-8" ng-show="opts">
+<form name="test_form" enctype="multipart/form-data" class="form-horizontal" novalidate>
+<div class="row">
+<label>1. Which is NOT true -  The black box tester:</label><br>
+<div class="radio-inline">
+	<input type="radio" ng-model="q1" name="q1" value="1" ng-change="mainr()">
+	should be able to understand a functional specification or requirements document<br>
+
+	<input type="radio" ng-model="q1" name="q1" value="2" ng-change="mainr()">
+	should be able to understand the source code-------<br>
+
+	<input type="radio" ng-model="q1" name="q1" value="3" ng-change="mainr()">
+	is highly motivated to find faults<br>
+
+	<input type="radio" ng-model="q1" name="q1" value="4" ng-change="mainr()">
+	is creative to find the system’s weaknesses<br>
+</div>
+</div>
+<br>
+<div class="row">
+<label>2. Beta testing is:</label><br>
+<div class="radio-inline">
+	<input type="radio" ng-model="q2" name="q2" value="1" ng-change="mainr()">
+	Performed by customers at their own site--------<br>
+
+	<input type="radio" ng-model="q2" name="q2" value="2" ng-change="mainr()">
+	Performed by customers at their software developer’s site<br>
+
+	<input type="radio" ng-model="q2" name="q2" value="3" ng-change="mainr()">
+	Performed by an independent test team<br>
+
+	<input type="radio" ng-model="q2" name="q2" value="4" ng-change="mainr()">
+	Useful to test bespoke software<br>
+	
+	<input type="radio" ng-model="q2" name="q2" value="5" ng-change="mainr()">
+	Performed as early as possible in the lifecycle<br>
+</div>
+</div>
+<br>
+<div class="row">
+<label>3. Which of the following is NOT a black box technique:</label><br>
+<div class="radio-inline">
+	<input type="radio" ng-model="q3" name="q3" value="1" ng-change="mainr()">
+	Equivalence partitioning<br>
+
+	<input type="radio" ng-model="q3" name="q3" value="2" ng-change="mainr()">
+	State transition testing<br>
+
+	<input type="radio" ng-model="q3" name="q3" value="3" ng-change="mainr()">
+	Linear code sequence and jump--------<br>
+
+	<input type="radio" ng-model="q3" name="q3" value="4" ng-change="mainr()">
+	Syntax testing<br>
+	
+	<input type="radio" ng-model="q3" name="q3" value="5" ng-change="mainr()">
+	Boundary value analysis<br>
+</div>
+</div>
+<br>
+<div class="row">
+<label>4. Which of the following is NOT a static testing technique:</label><br>
+<div class="radio-inline">
+	<input type="radio" ng-model="q4" name="q4" value="1" ng-change="mainr()">
+	Error guessing-------<br>
+
+	<input type="radio" ng-model="q4" name="q4" value="2" ng-change="mainr()">
+	Walkthrough<br>
+
+	<input type="radio" ng-model="q4" name="q4" value="3" ng-change="mainr()">
+	Data flow analysis<br>
+	
+	<input type="radio" ng-model="q4" name="q4" value="4" ng-change="mainr()">
+	Inspections<br>
+</div>
+</div>
+<br>
+<div class="row">
+<label>5. Verification is:</label><br>
+<div class="radio-inline">
+	<input type="radio" ng-model="q5" name="q5" value="1" ng-change="mainr()">
+	Checking that we are building the right system<br>
+
+	<input type="radio" ng-model="q5" name="q5" value="2" ng-change="mainr()">
+	Checking that we are building the system right----------<br>
+
+	<input type="radio" ng-model="q5" name="q5" value="3" ng-change="mainr()">
+	Performed by an independent test team<br>
+
+	<input type="radio" ng-model="q5" name="q5" value="4" ng-change="mainr()">
+	Making sure that it is what the user really wants<br>
+</div>
+</div>
+<br>
+<div class="row">
+<label>6. Which of the following is a major task of test planning:</label><br>
+<div class="radio-inline">
+	<input type="radio" ng-model="q6" name="q6" value="1" ng-change="mainr()">
+	Determining the test approach--------<br>
+
+	<input type="radio" ng-model="q6" name="q6" value="2" ng-change="mainr()">
+	Preparing test specifications<br>
+
+	<input type="radio" ng-model="q6" name="q6" value="3" ng-change="mainr()">
+	Evaluating exit criteria and reporting<br>
+
+	<input type="radio" ng-model="q6" name="q6" value="4" ng-change="mainr()">
+	Measuring and analyzing results<br>
+</div>
+</div>
+<br>
+<div class="row">
+<label>7. Test harness is a:</label><br>
+<div class="radio-inline">
+	<input type="radio" ng-model="q7" name="q7" value="1" ng-change="mainr()">
+	A high level document describing the principles, approach and major objectives of the organization regarding testing<br>
+
+	<input type="radio" ng-model="q7" name="q7" value="2" ng-change="mainr()">
+	A distance set of test activities collected into a manageable phase of a project<br>
+
+	<input type="radio" ng-model="q7" name="q7" value="3" ng-change="mainr()">
+	A test environment comprised of stubs and drives needed to conduct a test-------<br>
+
+	<input type="radio" ng-model="q7" name="q7" value="4" ng-change="mainr()">
+	A set of several test cases for a component or system under test<br>
+</div>
+</div>
+<br>
+<div class="row">
+<label>8. What is the purpose of test completion criteria in a test plan:</label><br>
+<div class="radio-inline">
+	<input type="radio" ng-model="q8" name="q8" value="1" ng-change="mainr()">
+	To know when a specific test has finished its execution<br>
+
+	<input type="radio" ng-model="q8" name="q8" value="2" ng-change="mainr()">
+	To ensure that the test case specification is complete<br>
+
+	<input type="radio" ng-model="q8" name="q8" value="3" ng-change="mainr()">
+	To set the criteria used in generating test inputs<br>
+
+	<input type="radio" ng-model="q8" name="q8" value="4" ng-change="mainr()">
+	To know when test planning is complete<br>
+	
+	<input type="radio" ng-model="q8" name="q8" value="5" ng-change="mainr()">
+	To plan when to stop testing--------<br>
+</div>
+</div>
+<br>
+<div class="row">
+<label>9. Which of the following is not part of performance testing:</label><br>
+<div class="radio-inline">
+	<input type="radio" ng-model="q9" name="q9" value="1" ng-change="mainr()">
+	Measuring response time<br>
+
+	<input type="radio" ng-model="q9" name="q9" value="2" ng-change="mainr()">
+	Measuring transaction rates<br>
+
+	<input type="radio" ng-model="q9" name="q9" value="3" ng-change="mainr()">
+	Recovery testing---------<br>
+
+	<input type="radio" ng-model="q9" name="q9" value="4" ng-change="mainr()">
+	Simulating many users<br>
+	
+	<input type="radio" ng-model="q9" name="q9" value="5" ng-change="mainr()">
+	Generating many transactions<br>
+</div>
+</div>
+<br>
+<div class="row">
+<label>10. Equivalence partitioning is:</label><br>
+<div class="radio-inline">
+	<input type="radio" ng-model="q0" name="q0" value="1" ng-change="mainr()">
+	A black box testing technique used only by developers<br>
+
+	<input type="radio" ng-model="q0" name="q0" value="2" ng-change="mainr()">
+	A black box testing technique than can only be used during system testing<br>
+
+	<input type="radio" ng-model="q0" name="q0" value="3" ng-change="mainr()">
+	A black box testing technique appropriate to all levels of testing-------<br>
+
+	<input type="radio" ng-model="q0" name="q0" value="4" ng-change="mainr()">
+	A white box testing technique appropriate for component testing<br>
+</div>
+</div>
+<input type="submit" class="btn btn-default btn-primary" ng-click="test()">
+</form>
+</div>
+
+<div class="col-md-8" ng-show="crpr">
+<div class="row" style="padding:5px 5px 5px 5px;border: solid #70D2EB  1px;">
+<label>Project Description:</label><br>
+You will use the following business scenario for your course project. You will prepare the test plan, cases, and scripts in response to this situation.
+
+Business: Caplan Software. This business produces accounting software. It has a new product that will be released in six months. Management has decided that it needs to develop a test strategy to make sure the product is ready to be released in six months.
+
+The application involves tracking accounts payable. This application will accept accounts payable invoices into the system and generate a report that will isolate new accounts, 30-day, 60-day, and over 120-day aging. The application has been designed using a GUI front end and a database back end.
+
+The users have determined that the following factors are critical to acquire in order for them to use the application and provide management with the needed report:
+
+The screen to enter data must have a field for the following: Invoice date, invoice number, requisition number, PO number, vendor's name, item number, amount of item, description, amount per unit, total per unit, total per invoice, terms of invoice, discount, and tax.
+The report needs to be run for different periods as well as for all of the periods requested.
+The report needs to be available on demand.
+The report needs to have a minimum of the following fields on every report: Invoice date, vendor's name, amount, terms, and aging information.
+</div>
+
+<div class="row" style="margin:5px 0 0 0;">
+<div class="row" style="border: solid #70D2EB  1px;">
+<table class="table">
+<tr>
+<td>Start Date:</td>
+<td>End Date:</td>
+</tr>
+</table>
+</div>
+</div>
+
+<div class="row" style="margin:5px 0 0 0;">
+<div class="row" style="border: solid #70D2EB  1px;">
+<div class="row h1 text-center">Past Reports</div>
+<table class="table table-hover table-striped">
+<tr>
+<td>Date</td>
+<td>No.of Bugs</td>
+<td>Bug Description</td>
+</tr>
+<tr>
+<td>11/19/2015</td>
+<td>1</td>
+<td>The report needs to have a minimum of the following fields on every report.</td>
+</tr>
+</table>
+</div>
+</div>
+
+<div class="row" style="margin:5px 0 0 0;">
+<div class="row" style="border: solid #70D2EB  1px;">
+<div class="row h1 text-center">New Bugs</div>
+<form name="test_form" enctype="multipart/form-data" class="form-horizontal" style="margin:0 0 0 20px"novalidate>
+<div class="form-group">
+<label>No. Of Bugs: </label><br><input type="text"><br>
+</div>
+		
+<div class="form-group">
+<label>Bug Description: </label><br><textarea></textarea>
+</div>
+
+<div class="form-group">
+<input type="file"><br>
+</div>
+</form>
+</div>
+</div>
+
+</div>
+
+<div class="col-md-8" ng-show="nwpr">
+
+<div class="row" style="padding:5px 5px 5px 5px;border: solid #70D2EB  1px;">
+<label>Project Name:</label> {{nw_pro_name}}
+</div>
+
+<div class="row" style="margin:5px 0 0 0;">
+<div class="row" style="border: solid #70D2EB  1px;padding:5px 5px 5px 5px;">
+<label>Project Description:</label><br>{{nw_pro_desc}}
+</div>
+</div>
+
+<div class="row" style="margin:5px 0 0 0;">
+<div class="row" style="border: solid #70D2EB  1px;">
+<table class="table">
+<tr>
+<td><label>Duration: </label> {{nw_pro_duration}} weeks</td>
+<td><label>Testing Type: </label> {{nw_pro_test_type}}</td>
+</tr>
+</table>
+</div>
+</div>
+
+<div class="row" style="margin:5px 0 0 0;">
+<div class="row" style="border: solid #70D2EB  1px;">
+<div class="row h1 text-center">Offer</div>
+<table class="table">
+<tr>
+<td><button type="button" class="btn btn-default btn-success btn-lg btn-block" ng-click="nwpr_acc()">Accept</button></td>
+<td><button type="button" class="btn btn-default btn-danger btn-success btn-lg btn-block" ng-click="nwpr_rej()">Reject</button></td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+
+
+
+</div>
+    </div>
+    </div>
+    </body>
+
+<script>
+
+		var app = angular.module('Mtaas', []);
+		
+		app.controller('Mtaas1', ['$scope','$http','$window',function ($scope,$http,$window) 
+	{
+			//alert("ankit");
+			$scope.home1 = true;
+			$scope.opts = false;
+			$scope.crpr = false;
+			$scope.nwpr = false;
+			$scope.blrw = false;
+		
+			
+			$http({
+      	  		method: 'GET',
+      	 		url: '/checkLogin'
+        	 }).
+        then(function(response)
+        	{
+        	  	if (response.data.status == 200)
+        	  		{
+        	  			alert(response.data.fname);
+        	  			$scope.first_name=response.data.fname;
+        	  			$scope.last_name=response.data.lname;
+	  					$scope.emailid=response.data.mail;
+	  					$scope.rating = response.data.rating;
+	  					$scope.offer = response.data.offer;
+	  		//			alert(rating);
+       /*  	  			if(response.data.type === 'T')
+        	  				{	
+	        	  			//	$window.location.href = '/tr_dashboard';
+        	  				}
+        	  			else
+        	  				{	
+	        	  				$window.location.href = '/ap_dashboard';
+        	  				} */
+					}
+        	  	
+        	 });
+			
+			
+			$scope.ho_me = function (){
+				$scope.home1 = true;
+				$scope.opts = false;
+				$scope.crpr = false;
+				$scope.nwpr = false;
+				$scope.blrw = false;
+				
+			}
+			
+			$scope.op_ts = function (){
+				$scope.opts = true;
+				$scope.crpr = false;
+				$scope.nwpr = false;
+				$scope.blrw = false;
+				$scope.home1 = false;
+			}
+			
+			$scope.cr_pr = function (){
+				$scope.opts = false;
+				$scope.crpr = true;
+				$scope.nwpr = false;
+				$scope.blrw = false;
+				$scope.home1 = false;
+			}
+			
+			$scope.nw_pr = function (){
+				$scope.opts = false;
+				$scope.crpr = false;
+				$scope.nwpr = true;
+				$scope.blrw = false;
+				$scope.home1 = false;
+				$http({
+		  	  		method: 'POST',
+		  	 		url: '/newpro',
+		  	 		data: {"email":$scope.emailid}
+		    	 }).
+		    	then(function(response)
+		    	{
+//		    		alert(response.data.results);
+//		    		alert(response.data.results[0]["project_id"]);
+		    		$scope.nw_pro_name = response.data.results[0]["app_name"];
+		    		$scope.nw_pro_desc = response.data.results[0]["description"];
+		    		$scope.nw_pro_duration = response.data.results[0]["project_duration"];
+		    		$scope.nw_pro_test_type = response.data.results[0]["project_testing_type"];
+					$scope.nw_pro_pid = response.data.results[0]["project_id"];
+		    	})
+			
+			}
+			
+			$scope.bl_rw = function (){
+				$scope.opts = false;
+				$scope.crpr = false;
+				$scope.nwpr = false;
+				$scope.blrw = false;
+				$scope.home1 = false;
+			}
+			
+			$scope.test = function (){
+				var score = 0;
+				if($scope.q1 === "2"){
+					score = score + 1;
+				}
+				if($scope.q2 === "1"){
+					score = score + 1;
+				}
+				if($scope.q3 === "3"){
+					score = score + 1;
+				}
+				if($scope.q4 === "1"){
+					score = score + 1;
+				}
+				if($scope.q5 === "2"){
+					score = score + 1;
+				}
+				if($scope.q6 === "1"){
+					score = score + 1;
+				}
+				if($scope.q7 === "3"){
+					score = score + 1;
+				}
+				if($scope.q8 === "5"){
+					score = score + 1;
+				}
+				if($scope.q9 === "3"){
+					score = score + 1;
+				}
+				if($scope.q0 === "3"){
+					score = score + 1;
+				}				
+				alert(score);
+				
+				$http({
+		  	  		method: 'POST',
+		  	 		url: '/test',
+		  	 		data: {"score":score,"email":$scope.emailid}
+		    	 }).
+		    	then(function(response)
+		    	{
+		    		$window.location.href = '/tr_dashboard';
+		    	})
+			}
+			
+			$scope.logout = function (){
+				
+	//			alert("ankit");
+				$http({
+			  	  		method: 'POST',
+			  	 		url: '/logout',
+			    	 }).
+			    	then(function(response)
+			    	{
+			    		$window.location.href = '/';
+			    	})
+
+			}
+			
+			$scope.nwpr_acc = function (){
+				
+							alert("ankit");
+							$http({
+						  	  		method: 'POST',
+						  	 		url: '/nwpr_dec',
+						  	 		data: {"dec":"A","email":$scope.emailid,"pid":$scope.nw_pro_pid}
+						    	 }).
+						    	then(function(response)
+						    	{
+						    		$window.location.href = '/';
+						    	})
+
+			}
+
+			$scope.nwpr_rej = function (){
+				
+				alert("ankit");
+				$http({
+			  	  		method: 'POST',
+			  	 		url: '/nwpr_dec',
+			  	 		data: {"dec":"R","email":$scope.emailid,"pid":$scope.nw_pro_pid}
+			    	 }).
+			    	then(function(response)
+			    	{
+			    		$window.location.href = '/';
+			    	})
+
+			}
+
+}]);
+		
+		
+		
+		
+</script>
+
+  
+</html>

@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+	
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<script src="https://rawgit.com/ghostbar/angular-file-model/master/angular-file-model.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
+  
+  <style>
+
+  
+  .list-header{
+  background-image: -webkit-linear-gradient(top, #80D8EE, #38BDE0);
+  background-image: -moz-linear-gradient(top, #80D8EE, #38BDE0);
+  background-image: -ms-linear-gradient(top, #80D8EE, #38BDE0);
+  background-image: -o-linear-gradient(top, #80D8EE, #38BDE0);
+  background-image: linear-gradient(top, #80D8EE, #38BDE0);
+  color: white;
+  }
+
+  
+      html,body{width:100%;
+      height:100%;
+    font-family:  'Lucida Grande/Tahoma', Helvetica/Roboto;
+}
+.logo i {
+    font-size: 31px;
+    margin-right: 4px;
+    word-spacing: 14px;
+}
+.logo{
+    color: #F68428;
+    margin: 0;
+    font-size: 31px;
+    padding: 4px 0;
+    padding-bottom: 15px;
+
+}
+.login-bottom-text{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 12px;
+    color:#9DACCB;
+    line-height: 19px;
+}
+
+header{
+    background: #3b5998;
+    padding-top: 20px;
+}
+header .form-group{
+    margin-bottom: 0px;
+}
+header .btn-header-login{
+    margin-bottom: 15px;    
+}
+.login-text {
+
+  
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+
+  
+  -webkit-box-shadow: 0px 0px 0px #a4e388;
+  -moz-box-shadow: 0px 0px 0px #a4e388;
+  box-shadow: 0px 0px 0px #a4e388;
+
+  
+  border: solid #70D2EB  1px;
+  width:250px;
+  height:29px;
+}
+
+.search-text {
+
+  
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+
+  
+  -webkit-box-shadow: 0px 0px 0px #a4e388;
+  -moz-box-shadow: 0px 0px 0px #a4e388;
+  box-shadow: 0px 0px 0px #a4e388;
+
+  
+  border: solid #70D2EB  1px;
+  width:180px;
+  height:29px;
+}
+
+.login-btn {
+margin: -4px 0px 0px 20px;
+padding: 1px 0px 1px 0px;
+   background: #70D2EB;
+  background-image: -webkit-linear-gradient(top, #70D2EB, #70D2EB);
+  background-image: -moz-linear-gradient(top, #70D2EB, #70D2EB);
+  background-image: -ms-linear-gradient(top, #70D2EB, #70D2EB);
+  background-image: -o-linear-gradient(top, #70D2EB, #70D2EB);
+  background-image: linear-gradient(to bottom, #70D2EB, #70D2EB);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 6px;
+  text-shadow: 0px 1px 0px #898a88;
+  -webkit-box-shadow: 0px 0px 0px #a4e388;
+  -moz-box-shadow: 0px 0px 0px #a4e388;
+  box-shadow: 0px 0px 0px #a4e388;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  border: solid #1d2a5b  1px;
+  width:160px;
+  height:29px;
+}
+.login-btn:hover {
+  background: #637BAD;
+  background-image: -webkit-linear-gradient(top, #637BAD, #5973A8);
+  background-image: -moz-linear-gradient(top, #637BAD, #5973A8);
+  background-image: -ms-linear-gradient(top, #637BAD, #5973A8);
+  background-image: -o-linear-gradient(top, #637BAD, #5973A8);
+  background-image: linear-gradient(to bottom, #637BAD, #5973A8);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 6px;
+  text-shadow: 0px 1px 0px #898a88;
+  -webkit-box-shadow: 0px 0px 0px #a4e388;
+  -moz-box-shadow: 0px 0px 0px #a4e388;
+  box-shadow: 0px 0px 0px #a4e388;
+  font-family: Arial;
+  color: #f3ffff;
+  font-size: 13px;
+
+  
+  border: solid #1d2a5b  1px;
+  text-decoration: none;
+}
+.login-main{
+    margin-top: 130px;
+}
+.multibox{
+    padding-left: 0px;
+    padding-bottom: 10px;
+}
+.login-main span{
+    font-size: 12px;
+} 
+#wrap{
+background-image: -ms-linear-gradient(top, #FFFFFF 0%, #D3D8E8 100%);
+/* Mozilla Firefox */ 
+background-image: -moz-linear-gradient(top, #FFFFFF 0%, #D3D8E8 100%);
+/* Opera */ 
+background-image: -o-linear-gradient(top, #FFFFFF 0%, #D3D8E8 100%);
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #D3D8E8));
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #D3D8E8 100%);
+/* W3C Markup, IE10 Release Preview */ 
+background-image: linear-gradient(to bottom, #FFFFFF 0%, #D3D8E8 100%);
+background-repeat: no-repeat;
+background-attachment: fixed;
+}
+
+strong{
+    color:#141823;
+    font-size:25px;
+    font-weight:bold;
+}
+.signup-btn {
+  background: #79bc64;
+  background-image: -webkit-linear-gradient(top, #79bc64, #578843);
+  background-image: -moz-linear-gradient(top, #79bc64, #578843);
+  background-image: -ms-linear-gradient(top, #79bc64, #578843);
+  background-image: -o-linear-gradient(top, #79bc64, #578843);
+  background-image: linear-gradient(to bottom, #79bc64, #578843);
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+  text-shadow: 0px 1px 0px #898a88;
+  -webkit-box-shadow: 0px 0px 0px #a4e388;
+  -moz-box-shadow: 0px 0px 0px #a4e388;
+  box-shadow: 0px 0px 0px #a4e388;
+  font-family: Arial;
+  color: #f3ffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  border: solid #3b6e22  1px;
+  text-decoration: none;
+  width:250px;
+  height:35px;
+  }
+
+
+.signup-btn:hover {
+  background: #79bc64;
+  background-image: -webkit-linear-gradient(top, #79bc64, #5e7056);
+  background-image: -moz-linear-gradient(top, #79bc64, #5e7056);
+  background-image: -ms-linear-gradient(top, #79bc64, #5e7056);
+  background-image: -o-linear-gradient(top, #79bc64, #5e7056);
+  background-image: linear-gradient(to bottom, #79bc64, #5e7056);
+  text-decoration: none;
+
+ 
+}
+.navbar-default .navbar-brand{
+        color:#fff;
+        font-size:30px;
+        font-weight:bold;
+    }
+.form .form-control { margin-bottom: 10px; }
+@media (min-width:768px) {
+    #home{
+        margin-top:50px;
+    }
+    #home .slogan{
+        color: #0e385f;
+        line-height: 29px;
+        font-weight:bold;
+    }
+}
+
+footer hr{
+    margin-top: 0px;
+    padding-top: 0px;
+}
+.footer-options ul{
+    clear: both;
+    padding: 0px;
+    margin: 0px;
+}
+.footer-options ul li{
+    float:left;
+    list-style: none;
+    padding: 5px;
+    font-size: 12px;
+}
+.footer-options ul li a{
+    text-decoration: none;
+    color: #000;
+}
+.copyrights{
+    margin-top: 25px;
+}
+
+/* //////////////////////////////////////////////////////////////////////////////////////////
+HEADER
+////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+.header {
+	/*background: url(../images/layout/bg-header-top.jpg) 0 32px no-repeat;*/
+	height: 150px;
+}
+.list-header {
+
+	
+	width: 100%;
+	height: 23px;
+	margin: 0 0 0 0;
+	padding: 0;
+}
+.list-header li {
+	float: right;
+	display: inline;
+	margin: 4px 20px 0 0;
+}
+.list-header .tagline {
+	float: left;
+	margin: 4px 0 0 30px;
+	padding: 0 0 15px 0;
+}
+.header h1 {
+	float: left;
+	/* background: url(../images/2015/logo.png) no-repeat; */
+	width: 245px;
+	height: 110px;
+	text-indent: -200px;
+	margin: 37px 0 0 0;
+}
+.nav {
+	margin: 0;
+	padding: 0;
+	height: 1em;
+}
+.header .nav {
+	float: right;
+	margin: 35px 0px 0 0;
+}
+.header .nav li {
+	list-style: none;
+	float: left;
+	font-size: 19px;
+}
+.header .nav li a {
+	display: block;
+	padding: 10px 13px;
+	color: #2ba9bd;
+	text-decoration: none;
+}
+.header .nav li ul {
+	display: none;
+	width: 11em; /*width to help Opera out*/
+	background-color: #2ba9bd;
+}
+.header .nav li:hover ul, .header .nav li.hover ul {
+	display: block;
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	z-index: 2000;
+}
+.header .nav li ul li a {
+	font-size: 14px !important;	
+}
+.header .nav li:hover li, .header .nav li.hover li {
+	float: none;
+}
+.header .nav li:hover li a, .header .nav li:hover li a {
+	background-color: #2ba9bd;
+	border-bottom: 1px solid #fff;
+	color: #fff;
+}
+.header .nav li li a:hover {
+	background-color: #16535b;
+}
+
+.wrap-main {
+	width: 1004px;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.mainpage {
+	background-image: -webkit-linear-gradient(top, #E5E5E5, #FFFFFF);
+  	background-image: -moz-linear-gradient(top, #E5E5E5, #FFFFFF);
+  	background-image: -ms-linear-gradient(top, #E5E5E5, #FFFFFF);
+  	background-image: -o-linear-gradient(top, #E5E5E5, #FFFFFF);
+  	background-image: linear-gradient(top, #E5E5E5, #FFFFFF);
+}
+
+.search {	
+	margin: 0 0 0 0;
+	padding: 0 0 0 100px;
+}
+
+.petdet {	
+	margin: 0 0 0 0;
+	padding: 0 0 0 5px;
+	background: #ffffff;
+}
+
+.sidebar {	
+	margin: 8px 0 0 0;
+	padding: 0 0 0 0;
+	position: relative;
+}
+
+.container-fluid{
+padding: 0 0 0 0;
+}
+  </style>
+  </head>
+
+  
+  <body>
+  	<div ng-app="Mtaas"  data-ng-controller="Mtaas">
+  	<div class="container-fluid">
+  	<!--/////////////////////////////////////HEADER///////////////////////////////////////////-->
+	      <div class="header">
+        	  <ul class="list-header">
+                <li class="tagline">Search Pets. Adopt Pets. Save Pets.</li>
+                </ul>
+
+              
+
+              
+
+    
+    <div class="row">
+
+        <!-- <div class="col-md-4"> -->
+            <h1>Mobile Cloud Testing</h1>
+
+      
+
+      
+        <div class="col-md-6">
+            <div class="row">
+
+	
+	            <ul class="nav">
+                <li><a  href="#">ABOUT</a>
+				</li>
+
+    
+                <li><a  href="#">BLOG</a>
+                	
+				</li>
+
+	
+                <li><a  href="#">LOOK</a>
+                	<ul>
+                        	<li><a href="#">Facebook Fan Page</a></li>
+					</ul>
+				</li>     
+
+	         
+	<li class=""><a  href="#"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></a>
+                	<ul>
+                	<li><a role="button"  ng-model="selected" href="" ng-click="logout()">Logout</a></li>
+					</ul>
+    </li> 
+
+	 
+            </ul>
+
+	
+            </div> 
+
+           
+        </div>
+    </div>
+
+    
+
+            
+        </div><!--end header-->
+
+<!--/////////////////////////////////////HEADER///////////////////////////////////////////-->
+
+
+<div class="row" style="background:#70D2EB;"><div class="col-md-1"></div></div>
+<div class="row mainpage">
+  	<div class="row col-md-12 search" ng-show=true><br></div>
+
+   
+	  	<div class="col-md-3">
+		  	<div class="list-group">
+				<div class="form-group">
+				<button type="button" class="list-group-item" ng-click="homePage()" style="margin:1px 0 0 0">Home</button>
+				
+			  	<button type="button" class="list-group-item" ng-click="nwprPage()" style="margin:1px 0 0 0">Create New Project</button>
+			
+			    <button type="button" class="list-group-item" ng-click="fntrPage()" style="margin:3px 0 0 0">Find a tester</button>
+			
+				<button type="button" class="list-group-item" ng-click="ruprPage()" style="margin:3px 0 0 0">Running Project<span class="badge">2</span></button>
+			
+			  	<button type="button" class="list-group-item" ng-click="blprPage()" style="margin:3px 0 0 0">Project Billing</button>
+			  	
+			  	<button type="button" class="list-group-item" ng-click="ratrPage()" style="margin:3px 0 0 0">Rank Tester</button>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="col-md-8" ng-show="home">
+			<div class="row" style="padding:5px 5px 5px 5px;border: solid #70D2EB  1px;">
+			<h1>Hello!!</h1>
+			<h2>it is home page</h2>
+			</div>
+		</div>
+		
+		
+		<div class="col-md-8" ng-show="nwpr">
+			<div class="row" style="padding:5px 5px 5px 5px;border: solid #70D2EB  1px;">
+				
+				<form name="new_project_form" enctype="multipart/form-data" novalidate>
+				
+					<label for="app_name" class="col-md-2">Application Name </label>
+					<input type="text" name="app_name" ng-model="app_name" maxlength="10" placeholder="Application Name"  required>
+					<!-- <span style="color:red" ng-show="pet_search_form.sr_type.$dirty && pet_search_form.sr_type.$invalid">
+					<span ng-show="pet_search_form.sr_type.$error.required">Pet Type is required.</span>
+					</span> -->
+                    <br/>
+                    		
+					<div class="form-group">
+				    <label for="desc" class="col-md-2">Description</label><br>
+					<textarea ng-model="desc" name="desc" id="desc" rows="4" cols="50"></textarea>
+					</div>
+					
+					
+					<label for="nf_testers" class="col-md-2">No of Testers</label>
+                    <input type="text" name="nf_testers" ng-model="nf_testers" maxlength="10" placeholder="Number Of Testers"  required>
+					<!-- <span style="color:red" ng-show="pet_search_form.sr_color.$dirty && pet_search_form.sr_color.$invalid">
+					<span ng-show="pet_search_form.pet.sr_color.$error.required">Pet Color is required.</span>
+					</span> -->
+                    <br/>                    					
+                    <br/>
+                    
+                    <label for="platform" class="col-md-2">Platform</label>
+                    <!--<input type="text" name="platform" ng-model="platform" maxlength="10" placeholder="Platform"  required>
+					 <span style="color:red" ng-show="pet_search_form.sr_color.$dirty && pet_search_form.sr_color.$invalid">
+					<span ng-show="pet_search_form.pet.sr_color.$error.required">Pet Color is required.</span>
+					</span> -->
+					<br/>
+					<div class="col-md-2">
+					<div class="row radio">
+	  				<input type="radio" ng-model="platform" name="platform" value="Android" >Android
+					</div>
+					<div class="row radio">	  				
+						<input type="radio" ng-model="platform" name="platform" value="IOS" >IOS
+					</div>
+					<div class="row radio">	  				
+						<input type="radio" ng-model="platform" name="platform" value="Windows" >Windows
+					</div>
+					</div>
+					
+                    <br/> 
+        
+                    <!--<input type="text" name="lang_pref" ng-model="lang_pref" maxlength="10" placeholder="Language Preference"  required>
+					<span style="color:red" ng-show="pet_search_form.sr_color.$dirty && pet_search_form.sr_color.$invalid">
+					<span ng-show="pet_search_form.pet.sr_color.$error.required">Pet Color is required.</span>
+					</span> -->
+					<div class="col-md-2">
+					<br/>
+					<br/>
+					<br/>
+					<br/>
+					<br/>
+					</div>
+					
+					<label for="lang_pref" class="col-md-2">Language Prefer</label>
+					<div class="form-group">
+					<select name="lang_pref" class="login-text" ng-model="lang_pref">
+                	<option value="English">English</option>
+                	<option value="Chinese">Chinese</option>
+                	</select>
+                	</div>
+					
+                    <br/> 
+                    <br/>
+                    <label for="testing_ty" class="col-md-2">Testing Type</label>
+                    <!--<input type="text" name="testing_ty" ng-model="testing_ty" maxlength="10" placeholder="Testing Type"  required>
+					 <span style="color:red" ng-show="pet_search_form.sr_color.$dirty && pet_search_form.sr_color.$invalid">
+					<span ng-show="pet_search_form.pet.sr_color.$error.required">Pet Color is required.</span>
+					</span> -->
+					
+					<div class="form-group">
+					<select name="testing_ty" class="login-text" ng-model="testing_ty">
+                	<option value="Functional">Functional</option>
+                	<option value="abc">abc</option>
+                	</select>
+                	</div>
+					
+                    <br/> 
+                    <br/>
+                    <label for="pr_budget" class="col-md-2">Project Budget</label>
+                    <input type="text" name="pr_budget" ng-model="pr_budget" maxlength="10" placeholder="Project Budget"  required>
+					<!-- <span style="color:red" ng-show="pet_search_form.sr_color.$dirty && pet_search_form.sr_color.$invalid">
+					<span ng-show="pet_search_form.pet.sr_color.$error.required">Pet Color is required.</span>
+					</span> -->
+                    <br/> 	
+                    <br/>
+                    <label for="pr_duration" class="col-md-2">Project Duration</label>
+                    <input type="text" name="pr_duration" ng-model="pr_duration" maxlength="10" placeholder="Project Duration"  required>
+					<!-- <span style="color:red" ng-show="pet_search_form.sr_color.$dirty && pet_search_form.sr_color.$invalid">
+					<span ng-show="pet_search_form.pet.sr_color.$error.required">Pet Color is required.</span>
+					</span> -->
+                    <br/> 	
+                    <br/>
+                    <label for="pr_accessAr" class="col-md-2">Project Access Area</label>
+                    <input type="text" name="pr_accessAr" ng-model="pr_accessAr" maxlength="20" placeholder="Project Access Area Link"  required>
+					<!-- <span style="color:red" ng-show="pet_search_form.sr_color.$dirty && pet_search_form.sr_color.$invalid">
+					<span ng-show="pet_search_form.pet.sr_color.$error.required">Pet Color is required.</span>
+					</span> -->
+                    <br/> 	
+                    <br/>
+                    <label for="rp_accessAr" class="col-md-2">Report Access Area</label>
+                    <input type="text" name="rp_accessAr" ng-model="rp_accessAr" maxlength="20" placeholder="Report Access Area Link"  required>
+					<!-- <span style="color:red" ng-show="pet_search_form.sr_color.$dirty && pet_search_form.sr_color.$invalid">
+					<span ng-show="pet_search_form.pet.sr_color.$error.required">Pet Color is required.</span>
+					</span> -->
+                    <br/> 	
+                    <br/>
+                    <div class="col-md-2"></div>
+                    <input type="submit", ng-click="newProject()">
+
+					</form>		
+	 		 		
+			</div>
+			
+		</div>
+		
+	    <div class="col-md-8"  ng-show="fntr">
+		    <div class="row" style="padding:5px 5px 5px 5px;border: solid #70D2EB  1px;">
+				<h1>Hello!!</h1>
+				<h2>it is find a tester page</h2><br/>
+				  <Label for= "app_name_tr" > Enter Application Name  </Label>
+			    <input type="text" ng-model="app_name_tr" name="app_name_tr" required>
+			    <br/>
+			    <input type="submit", ng-click="findTester()">
+			</div>
+		  
+	    </div>
+	    
+	    
+		<div class="col-md-8" ng-show="actr">
+			<div class="row" style="padding:5px 5px 5px 5px;border: solid #70D2EB  1px;">
+			    
+			    <div ng-repeat="item in details">
+				<input type="checkbox" ng-model="item.selected"  ng-true-value="true" ng-false-value="false"/>{{item.first_name}} {{item.last_name}}
+				</div>
+				
+				<input type="button" name="submit" value="submit" ng-click="acceptTester(details)"/>
+				
+				
+				    
+			</div>
+	    </div>
+	  	
+	  	
+	  	 <div class="col-md-8"  ng-show="blpr">
+		    <div class="row" style="padding:5px 5px 5px 5px;border: solid #70D2EB  1px;">
+				<h1>Hello!!</h1>
+				<h2>it is find a billing page</h2><br/>
+				  <Label for= "app_name_bl" > Enter Application Name  </Label>
+			    <input type="text" ng-model="app_name_bl" name="app_name_bl" required>
+			    <br/>
+			    <input type="submit", ng-click="billing()">
+			</div>
+		  
+	    </div>
+	    
+	    
+	    <div class="col-md-8"  ng-show="blcl">
+		    <div class="row" style="padding:5px 5px 5px 5px;border: solid #70D2EB  1px;">
+				<div ng-repeat="item in details">
+				<label>Enter points for {{item.tr_email}} :</label>
+				<input type="text" ng-model="item.points" />
+				</div>
+			    <br/>
+			    <input type="submit", ng-click="Billingclosure()">
+			</div>
+		  
+	    </div>
+		
+</div>
+</div>
+</body>
+
+
+<script>
+
+	var app = angular.module('Mtaas', []);
+
+	
+	app.controller('Mtaas', ['$scope','$http','$window',function ($scope,$http,$window) 
+	{
+	
+		$scope.home = true;
+		$scope.nwpr = false;
+		$scope.fntr = false;
+		$scope.actr = false;
+		$scope.rupr = false;
+		$scope.blpr = false;
+		$scope.blcl = false;	
+	
+	$http({
+      	  	method: 'GET',
+      	 	url: '/checkLogin'
+         }).then(function(response)
+        	{
+        	  	if (response.data.status == 200)
+        	  		{
+    	  			alert(response.data.fname);
+  					$scope.email=response.data.mail;
+  					}
+        	  	
+        	 });	
+
+	
+	$scope.homePage = function (){
+		$scope.home = true;
+		$scope.nwpr = false;
+		$scope.fntr = false;
+		$scope.actr = false;
+		$scope.rupr = false;
+		$scope.blpr = false;
+		
+	}
+
+	
+	$scope.nwprPage = function (){ 
+		
+		$scope.home = false;
+		$scope.nwpr = true;
+		$scope.fntr = false;
+		$scope.actr = false;
+		$scope.rupr = false;
+		$scope.blpr = false;
+				
+	}
+    
+   
+   $scope.fntrPage = function (){ 
+
+	    $scope.home = false;
+		$scope.nwpr = false;
+		$scope.fntr = true;
+		$scope.actr = false;
+		$scope.rupr = false;
+		$scope.blpr = false;
+				
+				
+	}
+	
+
+   $scope.blprPage = function (){ 
+
+	    $scope.home = false;
+		$scope.nwpr = false;
+		$scope.fntr = false;
+		$scope.actr = false;
+		$scope.rupr = false;
+		$scope.blpr = true;
+				
+				
+	}
+	
+	
+
+	
+	
+	
+	$scope.newProject = function (){
+	
+     alert("hello");
+	 alert($scope.email);					
+	
+	  $http({
+	  	  		method: 'POST',
+	  	 		url: '/newProject',
+	  	 		data: { "ad_email":$scope.email, 
+			  	 		"platform":$scope.platform,
+			  	 		"app_name":$scope.app_name ,
+			  	 		"description":$scope.desc ,
+			  	 		"no_of_testers":$scope.nf_testers,
+			  	 		"language_preference":$scope.lang_pref,
+			  	 		"project_testing_type":$scope.testing_ty,
+			  	 		"project_bugdet":$scope.pr_budget,
+			  	 		"Project_duration":$scope.pr_duration,
+			  	 		"project_access_area":$scope.pr_accessAr,
+			  	 		"report_access_area":$scope.rp_accessAr}
+		    	 }).then(function(response)
+		    	    {
+			    		if (response.data.status == 200)
+		    	  		{	  		      	
+			  		  		alert("New Project got created successfully");
+			  		  		$scope.home = true;
+							$scope.nwpr = false;
+							$scope.fntr = false;
+							$scope.actr = false; 
+							$scope.rupr = false;	
+							$scope.blpr = false;
+		    	  		       
+		    	  		 }		
+		    	   });
+	}
+   
+  
+   
+   $scope.findTester = function (){
+    
+      alert($scope.email);
+      alert($scope.app_name_tr);
+  
+      $http({
+	  	  		method: 'POST',
+	  	 		url: '/findTester',
+	  	 		data: { "ad_email":$scope.email,"app_name":$scope.app_name_tr}
+		  	 		
+		      }).then(function(response)  
+		        {
+		    	//alert(response.data.status);
+			    	if (response.data.status === 200)
+		    	  		{	
+					    	alert(response.data.detail[0]);
+						    
+						    $scope.home = false;
+							$scope.nwpr = false;
+							$scope.fntr = false;
+							$scope.actr = true; 
+							$scope.rupr = false;	
+							$scope.blpr = false;	
+							
+							$scope.details=response.data.detail;
+        	  		      
+        	  		    
+        	  		     }  
+        	  		     
+        	  		     if(response.data.status ===	500)
+        	  		      {
+        	  		       alert("Not enough testers in system at this point of time , Please try again");
+        	  		        $scope.home = true;
+							$scope.nwpr = false;
+							$scope.fntr = false;
+							$scope.actr = false; 
+							$scope.rupr = false;	
+							$scope.blpr = false;
+        	  		      
+        	  		      }
+        	  		      if(response.data.status===100)
+        	  		      {
+        	  		        alert("Testers already assigned , can't assign more testers for this application");
+        	  		        $scope.home = true;
+							$scope.nwpr = false;
+							$scope.fntr = false;
+							$scope.actr = false; 
+							$scope.rupr = false;	
+							$scope.blpr = false;
+        	  		      
+        	  		      }
+        	  		                 	  		    
+	            });
+	}
+	
+	
+	$scope.acceptTester = function (data) { 
+	
+	alert("coming in accept tester");
+    alert(data[0].first_name);
+    alert(data[0].selected);
+    alert(data[1].selected);
+   // console.log(JSON.stringify(data));
+    
+/*    var count=0;
+    var arr = [];
+	    while(i in data){
+	    var check=data[i].selected;
+	      if(check==true){
+	            alert("here"+data[i].email_id);
+	            arr.push(data[i].email_id);
+	            alert("hellooooooooooooo  "+arr[i]);
+	       } 
+	      
+	       count=count+1;
+	    } */
+	    
+	   $http({
+	  	  		method: 'POST',
+	  	 		url: '/acceptTester',
+	  	 		data: { "ap_email":$scope.email,"app_name":$scope.app_name_tr,"data":data}
+		  	 		
+		      }).then(function(response)  
+		        {
+			    	if (response.data.status == 200)
+		    	  		{	
+						    
+						    $scope.home = true;
+							$scope.nwpr = false;
+							$scope.fntr = false;
+							$scope.actr = false; 
+							$scope.rupr = false;	
+							$scope.blpr = false;	
+							
+							//$scope.details=response.data.detail;
+        	  		      
+        	  		    
+        	  		     }  	           	  		    
+	            });    
+   
+	
+	}	
+	
+	
+	$scope.runningProject = function (){
+	
+	}
+	
+   
+   
+   
+   
+   
+   $scope.billing = function (){
+
+   alert($scope.email);
+   alert($scope.app_name_bl);
+  
+      $http({
+	  	  		method: 'POST',
+	  	 		url: '/billing',
+	  	 		data: { "ad_email":$scope.email,"app_name":$scope.app_name_bl}
+		  	 		
+		      }).then(function(response)  
+		        {
+		    	
+			    	if (response.data.status == 200)
+		    	  		{	
+					    	alert(response.data.detail[0].tr_email);
+						    
+						    $scope.home = false;
+							$scope.nwpr = false;
+							$scope.fntr = false;
+							$scope.actr = false; 
+							$scope.rupr = false;	
+							$scope.blpr = false;
+							$scope.blcl= true;	
+							
+							$scope.details=response.data.detail;
+        	  		        $scope.project_id=response.data.details;
+        	  		    
+        	  		     }  	           	  		    
+	            });
+
+
+	}
+	
+	$scope.Billingclosure = function (){
+
+	} 
+
+	
+}]);
+
+	
+
+
+	
+</script>
+
+  
+</html>
