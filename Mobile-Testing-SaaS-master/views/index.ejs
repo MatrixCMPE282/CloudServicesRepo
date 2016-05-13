@@ -14,27 +14,27 @@
 <style type="text/css">
 	
 
-    body {
-        position: absolute;
-        top: 0; bottom: 0; left: 0; right: 0;
-        height: 100%;
-    }
-    body:before {
-        content: "";
-        position: absolute;
-        height: 20%; width: 20%;
-        background: url("./images/107753.jpg");
-        background-size: cover;
-        z-index: -1; /* Keep the background behind the content */
-        
-        /* don't forget to use the prefixes you need */
-        -webkit-transform: scale(5);
-        -webkit-transform-origin: top left;
-        -webkit-filter: blur(1px);
-        -moz-transform: scale(5);
-        -moz-transform-origin: top left;
-        -moz-filter: blur(1px)
-    }
+body {
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    height: 100%;
+}
+body:before {
+    content: "";
+    position: absolute;
+    height: 20%; width: 20%;
+    background: url("./images/1234.jpg");
+    background-size: cover;
+    z-index: -1; /* Keep the background behind the content */
+    
+    /* don't forget to use the prefixes you need */
+    -webkit-transform: scale(5);
+    -webkit-transform-origin: top left;
+    -webkit-filter: blur(1px);
+    -moz-transform: scale(5);
+    -moz-transform-origin: top left;
+    -moz-filter: blur(1px)
+}
 
 .has-error .help-block{
 	color:red;
@@ -47,7 +47,7 @@
 </style>
 	<title></title>
 </head>
-<body ng-app="mtaas" data-ng-controller="mtaas">
+<body ng-app="myapp" data-ng-controller="myapp">
 <div class="container">
 	<div class="col-md-4" style="top:45%;left:35%;position:absolute;">
 
@@ -89,9 +89,9 @@
 <script type="text/javascript">
 	
 	
-var app = angular.module('mtaas', []);
+var app = angular.module('myapp', []);
 
-app.controller('mtaas', ['$scope','$http','$window',function ($scope,$http,$window)  {
+app.controller('myapp', ['$scope','$http','$window',function ($scope,$http,$window)  {
 	$http({
 	  		method: 'GET',
 	 		url: '/checkLogin'
@@ -101,11 +101,11 @@ then(function(response)
 	  	if (response.data.status == 200)
 	  		{
 //	  			alert(response.data.fname);
-	  		/* 	$scope.first_name=response.data.fname;
-	  			$scope.last_name=response.data.lname;
-					$scope.emailid=response.data.mail;
-					$scope.rating = response.data.rating;
-					alert(rating); */
+	//  		 	$scope.first_name=response.data.email;
+	  			//$scope.last_name=response.data.lname;
+//					$scope.emailid=response.data.mail;
+//					$scope.rating = response.data.rating;
+//					alert(rating); 
  	  			if(response.data.type === 'T')
 	  				{	
     	  				$window.location.href = '/tr_dashboard';
@@ -136,7 +136,7 @@ then(function(response)
 		        	//alert(email);
 		        	  	if (response.data.status == 200)
 							{
-			        	 	//	$scope.username=response.data.name;
+			        	 	//	$scope.first_name=response.data.email;
 			        	 	//	$scope.ademailid=response.data.email;
 			        	 	//	$scope.main=true;
 			        	 	//	$scope.adwelcome=true;
