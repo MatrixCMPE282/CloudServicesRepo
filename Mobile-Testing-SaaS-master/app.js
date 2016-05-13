@@ -7,7 +7,7 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , register = require('./routes/Register')
+  , register = require('./routes/register')
   , dashboard = require('./routes/dashboard')
   , tester = require('./routes/tester')
   , appdeveloper= require('./routes/appdeveloper')//neelam
@@ -15,7 +15,7 @@ var express = require('express')
 
 var app = express();
 app.use(express.cookieParser());
-app.use(express.session({secret:'mtaas',duration:30*60*1000}));
+app.use(express.session({secret:'myapp',duration:30*60*1000}));
 
 // all environments
 app.set('port', process.env.PORT || 3002);
