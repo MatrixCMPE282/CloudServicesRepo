@@ -31,7 +31,7 @@
 	
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Dashboard</title>
+    <title>Employee Dashboard</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
@@ -52,7 +52,7 @@
 
 .rowmain{
 
-background: url("./images/cloud.jpg");
+background: url("../images/1234.jpg");
 
 width:1;
 height:1300px;
@@ -64,7 +64,7 @@ left:250px;
 </style>
   </head>
 
-  <body ng-app="mtaas" data-ng-controller="mtaas">
+  <body ng-app="myapp" data-ng-controller="myapp">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid" >
@@ -75,7 +75,7 @@ left:250px;
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">{{first_name}} {{last_name}}</a>
+ 
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -95,260 +95,20 @@ left:250px;
       <div class="row">
         <div class="col-sm-2 col-md-2 sidebar" style="background: url(./images/cloud.jpg);">
           <ul class="nav nav-sidebar">
-            <!-- <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li> -->
             <li><button type="button" class="list-group-item active" ng-click="homePage()" style="margin:1px 0 0 0">Home</button></li>
-            <li><button type="button" class="list-group-item" ng-click="nwprPage()" style="margin:3px 0 0 0;">Create New Project</button></li>
-            <li><button type="button" class="list-group-item" ng-click="fntrPage()" style="margin:3px 0 0 0;">Find a Tester</button></li>
-            <li><button type="button" class="list-group-item" ng-click="runningProject()" style="margin:3px 0 0 0;">All Projects</button></li>
-            <li><button type="button" class="list-group-item" ng-click="blprPage()" style="margin:3px 0 0 0;">Project Billing</button></li>
+            <li><button type="button" class="list-group-item" ng-click="nwprPage()" style="margin:3px 0 0 0;">Customer List</button></li>
+            <li><button type="button" class="list-group-item" ng-click="Page2()" style="margin:3px 0 0 0;">Order List</button></li>
           </ul>   
         </div>         
         
       <div class="rowmain">
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"  ng-show="home">
 			<div class="row col-md-7" style="margin:0 25% 0 23%;padding:5px 5px 5px 5px;border: solid #337AB7  1px;opacity:0.9; background-color:#ffffff">
-			<h1 align= "center">Welcome to MTaas</h1>
-			 <h3 align= "center">Your Application will be tested here on demand for free!<h3><br/>
-			 <div style="text-align:left;">
-			  <h4 >
-			  &#10004; Go Ahead and create a new project. <br/>
-			  &#10004; See status of your applications in one place <br/>
-			  &#10004; Find a new testers just on a click to start your app's testing.<br/>
-			  &#10004; close your project and pay testers based on their peformance.
-			</h4>
-			</div>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<h6>*Terms & Conditions: Testing quality is not guarantee of this website as testers are freelancers.
-			Billing and contract with tester is none of this websites's concers; our billing module will calculate the billing
-			according to project budget and payment shall be done directly to testers and not through this website.
-			<h6/>
+			<h1 align= "center">Welcome to Employee portal</h1>
+			
 			</div>
 		</div>
-	    
-        
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-show="nwpr">
-			<div class="row col-md-6" style="margin:0 25% 0 28%;padding:5px 5px 5px 5px;border: solid #337AB7  1px;opacity:0.9; background-color:#ffffff">
-				
-				
-				<form name="new_project_form" ng-submit="new_project_form.$valid && newProject()" novalidate>
-				
-				<div class="form-group" ng-class="{'has-error': (new_project_form.submitted || new_project_form.app_name.$touched || new_project_form.app_name.$dirty) && new_project_form.app_name.$invalid,
-												'has-success': (new_project_form.app_name.$touched || new_project_form.app_name.$dirty) && new_project_form.app_name.$valid}">
-				  <input type="text" name="app_name" data-ng-model="app_name" class="form-control" placeholder="Application Name" aria-describedby="basic-addon1" required>
-				  <span class="help-block glyphicon glyphicon-exclamation-sign" ng-show="(new_project_form.submitted || new_project_form.app_name.$touched || new_project_form.app_name.$dirty) && new_project_form.app_name.$error.required">App Name Required</span>
-				</div>
-			
-
-				<div class="form-group" ng-class="{'has-error': (new_project_form.submitted || new_project_form.desc.$touched || new_project_form.desc.$dirty) && new_project_form.desc.$invalid,
-											'has-success': (new_project_form.desc.$touched || new_project_form.desc.$dirty) && new_project_form.desc.$valid}">
-				<textarea ng-model="desc" name="desc" id="desc" rows="4" cols="50" class="form-control" placeholder="Brief Description for App" required></textarea>
-				<span class="help-block glyphicon glyphicon-exclamation-sign" ng-show="(new_project_form.submitted || new_project_form.desc.$touched || new_project_form.desc.$dirty) && new_project_form.desc.$error.required">App Description Required</span>
-				</div>
-					
-				<div class="form-group" ng-class="{'has-error': (new_project_form.submitted || new_project_form.nf_testers.$touched || new_project_form.nf_testers.$dirty) && new_project_form.nf_testers.$invalid,
-												'has-success': (new_project_form.nf_testers.$touched || new_project_form.nf_testers.$dirty) && new_project_form.nf_testers.$valid}">
-				  <input type="text" name="nf_testers" data-ng-model="nf_testers" class="form-control" placeholder="Number of Testers" ng-maxlength="2" ng-pattern="/^[0-9]{1,2}$/" aria-describedby="basic-addon1" required>
-				  <span class="help-block glyphicon glyphicon-exclamation-sign" ng-show="(new_project_form.submitted || new_project_form.nf_testers.$touched || new_project_form.nf_testers.$dirty) && new_project_form.nf_testers.$error.required">How Many testers?</span>
-					<span class="help-block glyphicon glyphicon-exclamation-sign" ng-show="new_project_form.nf_testers.$error.maxlength">You can demand maximum 10 testers.</span>
-					<span class="help-block glyphicon glyphicon-exclamation-sign" ng-show="new_project_form.nf_testers.$error.pattern">Number of testers should be numeric</span>
-				</div>
-                    
-                    
-               	<div class="form-group" ng-class="{'has-error': (new_project_form.submitted || new_project_form.platform.$touched || new_project_form.platform.$dirty) && new_project_form.platform.$invalid,
-												'has-success': (new_project_form.platform.$touched || new_project_form.platform.$dirty) && new_project_form.platform.$valid}">
-					<select name="platform" class="form-control" ng-model="platform" required>
-	        		<option label="Platform" selected="" disabled=""></option>
-                 	<option value="Android">Android</option>
-                 	<option value="IOS">IOS</option>
-                 	<option value="Windows">Windows</option>
-                 	</select>
-					<span class=" help-block glyphicon glyphicon-exclamation-sign" ng-show="(new_project_form.submitted || new_project_form.platform.$touched || new_project_form.platform.$dirty) && new_project_form.platform.$error.required">Please select testing platform</span>
-                 </div>
-                 
-
-		        <div class="form-group" ng-class="{'has-error': (new_project_form.submitted || new_project_form.lang_pref.$touched || new_project_form.lang_pref.$dirty) && new_project_form.lang_pref.$invalid,					
-		        									'has-success': (signupForm.lang_pref.$touched || signupForm.lang_pref.$dirty) && signupForm.lang_pref.$valid}">
-					<select name="lang_pref" class="form-control" ng-model="lang_pref" required>
-	        		<option label="Language Preference" selected="" disabled=""></option>
-                 	<option value="English">English</option>
-                 	<option value="Chinese">Chinese</option>
-                 	<option value="French">French</option>
-                 	<option value="German">German</option>
-                 	<option value="Latin">Latin</option>
-                 	<option value="Portuguese">Portuguese</option>
-                 	<option value="Russian">Russian</option>
-                 	<option value="Japanese">Japanese</option>
-                 	<option value="Korean">Korean</option>
-                 	<option value="Hindi">Hindi</option>
-                 	</select>
-                 	<span class=" help-block glyphicon glyphicon-exclamation-sign" ng-show="(new_project_form.submitted || new_project_form.lang_pref.$touched || new_project_form.lang_pref.$dirty) && new_project_form.lang_pref.$error.required">Language Required</span>
-                 </div>
-					
-				<div class="form-group" ng-class="{'has-error': (new_project_form.submitted || new_project_form.testing_ty.$touched || new_project_form.testing_ty.$dirty) && new_project_form.testing_ty.$invalid,					
-													'has-success': (signupForm.testing_ty.$touched || signupForm.testing_ty.$dirty) && signupForm.testing_ty.$valid}">
-					<select name="testing_ty" class="form-control" ng-model="testing_ty" required>
-	        		<option label="Testing Type" selected="" disabled=""></option>
-                 	<option value="Functional Testing">Functional Testing</option>
-                 	<option value="Laboratory Testing">Laboratory Testing</option>
-                 	<option value="Performance Testing">Performance Testing</option>
-                 	<option value="Memory Leakage Testing">Memory Leakage Testing</option>
-                 	<option value="Interrupt Testing">Interrupt Testing</option>
-                 	</select>
-                 	<span class=" help-block glyphicon glyphicon-exclamation-sign" ng-show="(new_project_form.submitted || new_project_form.testing_ty.$touched || new_project_form.testing_ty.$dirty) && new_project_form.testing_ty.$error.required">Testing type Required</span>
-                 </div>
-                 
-                 <div class="form-group" ng-class="{'has-error': (new_project_form.submitted || new_project_form.pr_budget.$touched || new_project_form.pr_budget.$dirty) && new_project_form.pr_budget.$invalid,
-											'has-success': (new_project_form.pr_budget.$touched || new_project_form.pr_budget.$dirty) && new_project_form.pr_budget.$valid}">
-			  		<div class="input-group">
-	  				<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-usd" ></span></span>
-			  		<input type="text" name="pr_budget" data-ng-model="pr_budget" class="form-control" placeholder="Project Budget" ng-pattern="/^[0-9]{1,}$/" aria-describedby="basic-addon1" required>
-			  		</div>
-			  		<span class="help-block glyphicon glyphicon-exclamation-sign" ng-show="(new_project_form.submitted || new_project_form.pr_budget.$touched || new_project_form.pr_budget.$dirty) && new_project_form.pr_budget.$error.required">Project Budget required</span>
-					<span class="help-block glyphicon glyphicon-exclamation-sign" ng-show="new_project_form.pr_budget.$error.pattern">Project Budget should be numeric</span>
-				</div>
-
-                <div class="form-group" ng-class="{'has-error': (new_project_form.submitted || new_project_form.pr_duration.$touched || new_project_form.pr_duration.$dirty) && new_project_form.pr_duration.$invalid,
-												'has-success': (new_project_form.pr_duration.$touched || new_project_form.pr_duration.$dirty) && new_project_form.pr_duration.$valid}">
-			  		<div class="input-group">
-		  			<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" ></span></span>
-			  		<input type="text" name="pr_duration" data-ng-model="pr_duration" class="form-control" placeholder="Project Duration in weeks" ng-pattern="/^[0-9]{1,}$/" aria-describedby="basic-addon1" required>
-			  		</div>
-			  		<span class="help-block glyphicon glyphicon-exclamation-sign" ng-show="(new_project_form.submitted || new_project_form.pr_duration.$touched || new_project_form.pr_duration.$dirty) && new_project_form.pr_duration.$error.required">Project Duration required</span>
-					<span class="help-block glyphicon glyphicon-exclamation-sign" ng-show="new_project_form.pr_duration.$error.pattern">Project Duration should be numeric</span>
-				</div>
-                
-                <div class="form-group" ng-class="{'has-error': (new_project_form.submitted || new_project_form.pr_accessAr.$touched || new_project_form.pr_accessAr.$dirty) && new_project_form.pr_accessAr.$invalid,
-												'has-success': (new_project_form.pr_accessAr.$touched || new_project_form.pr_accessAr.$dirty) && new_project_form.pr_accessAr.$valid}">
-				  <input type="text" name="pr_accessAr" data-ng-model="pr_accessAr" class="form-control" placeholder="Project Access Area Link" aria-describedby="basic-addon1" required>
-				  <span class="help-block glyphicon glyphicon-exclamation-sign" ng-show="(new_project_form.submitted || new_project_form.pr_accessAr.$touched || new_project_form.pr_accessAr.$dirty) && new_project_form.pr_accessAr.$error.required">Project Access area Required</span>
-				</div>
-				
-				<div class="form-group" ng-class="{'has-error': (new_project_form.submitted || new_project_form.rp_accessAr.$touched || new_project_form.rp_accessAr.$dirty) && new_project_form.rp_accessAr.$invalid,
-												'has-success': (new_project_form.rp_accessAr.$touched || new_project_form.rp_accessAr.$dirty) && new_project_form.rp_accessAr.$valid}">
-				  <input type="text" name="rp_accessAr" data-ng-model="rp_accessAr" class="form-control" placeholder="Report Access Area Link" aria-describedby="basic-addon1" required>
-				  <span class="help-block glyphicon glyphicon-exclamation-sign" ng-show="(new_project_form.submitted || new_project_form.rp_accessAr.$touched || new_project_form.rp_accessAr.$dirty) && new_project_form.rp_accessAr.$error.required">Report Access area Required</span>
-				</div>
-				
-                <input type="submit" class="btn btn-default btn-primary" style="width:100%" ng-click="new_project_form.submitted = true">
-
-				</form>		
-	 		 		
-			</div>
-			
-		</div>
-		
-	    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"  ng-show="fntr"> 
-		  <div class="row col-md-6" style="margin:5% 25% 0 23%;padding:5px 5px 5px 5px;border: solid #337AB7  1px;opacity:0.9; background-color:#ffffff">
-			   <h2 align= "center">Find a tester for your App here</h2>
-			   <h4 align= "center">
-				<div class="form-group">
-			   <input type="text" class="form-control" ng-model="app_name_tr" name="app_name_tr" style="width:50%;margin:0 0 0 25%" placeholder="Enter application name" required>
-			    </div>
-			      <div class="form-group">
-			    <input type="submit" class="btn btn-default btn-primary" value="Find Testers" ng-click="findTester()">
-			    </div>
-			    </h4>
-			</div>		  
-	    </div>
-	    
-	    
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-show="actr">
-			<div class="row col-md-6" style="margin:5% 25% 0 23%;padding:5px 5px 5px 5px;border: solid #337AB7  1px;opacity:0.9; background-color:#ffffff">
-			    			   <h2 align= "center">Available Testers</h2><br/>
-			    <div align="center" ng-repeat="item in details">
-			    <div class="checkbox-inline">
-					<input type="checkbox" ng-model="item.selected"  ng-true-value="true" ng-false-value="false"/>{{item.first_name}} {{item.last_name}}
-				</div>
-				</div><br/>
-				<div  align="center"class="form-group">
-				<input type="button" name="submit" value="Send Offer" class="btn btn-default btn-primary" ng-click="acceptTester(details)"/>
-				</div>
-				
-				    
-			</div>
-	    </div>
-	    
-	    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"  ng-show="rupr">
-		    <div class="row col-md-6" style="margin:0 25% 0 23%;padding:5px 5px 5px 5px;border: solid #337AB7  1px;opacity:0.9; background-color:#ffffff">
-				<h1>Applications</h1>
-				<div>
-				<table class="table table-hover table-striped">
-				<tr>
-				<td>Application Name</td>
-				<td>Application Budget</td>
-				<td>Application Status</td>
-				</tr>
-				<tr ng-repeat="item in details">
-				<td>{{item.app_name}}</td>
-				<td>{{item.project_bugdet}}</td>
-				<td ng-show="item.project_status === 'P'">Pending</td>
-				<td ng-show="item.project_status === 'C'">Completed</td>
-				</tr>
-				</table>
-				</div>
-			</div>
-		  
-	    </div>
-	  	
-	  	
-	  	 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"  ng-show="blpr">
-		   <div class="row col-md-6" style="margin:5% 25% 0 23%;padding:5px 5px 5px 5px;border: solid #337AB7  1px;opacity:0.9; background-color:#ffffff">	
-			  <h2 align= "center">Billing and Project Closure</h2>
-			   <h4 align= "center">
-			   <div class="form-group">
-			   <input type="text" ng-model="app_name_bl" name="app_name_bl" placeholder="Enter application name" class="form-control" style="width:50%;margin:0 0 0 25%" required >
-			   </div>
-			   <div class="form-group">
-			   <input type="submit" class="btn btn-default btn-primary"  value="Start Billing" ng-click="billing()">
-			   </div>
-			    </h4>
-			</div>
-		  
-	    </div>
-	    
-	    
-	    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"  ng-show="blcl">
-		   <div class="row col-md-6" style="margin:0 30% 0 23%;padding:5px 5px 5px 5px;border: solid #337AB7  1px;opacity:0.9; background-color:#ffffff">
-				<div ng-repeat="item in details">
-				<h2 align= "center">Enter Points for each tester</h2>
-				<br/>
-				<h5 align= "center">
-				<label>{{item.first_name}} {{item.last_name}} :</label>
-				<input type="text" ng-model="item.points" placeholder="Points"/>
-			    <br/>
-			    <br/>
-			    <br/>
-			    <input type="submit", ng-click="Billingclosure(details)">
-			    </h5>
-			    </div>
-			</div>	  
-	    </div>
-	    
-	    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"  ng-show="bill">
-		   <div class="row col-md-6" style="margin:0 25% 0 23%;padding:5px 5px 5px 5px;border: solid #337AB7  1px;opacity:0.9; background-color:#ffffff">
-				<h1>Project {{item.app_name}} is closed</h1>
-				<h2<Billing Information Below:</h2>
-				<div >
-			    <table class="table table-hover table-striped">
-				<tr>
-				<td>Application Name</td>
-				<td>Testers</td>
-				<td>Payment</td>
-				</tr>
-				<tr ng-repeat="item in details">
-				<td>{{item.app_name}}</td>
-				<td>{{item.first_name}} {{item.last_name}}</td>
-				<td>{{item.pay}}</td>
-				</tr>
-				</table>
-			</div>	  
-	    </div>
-	    
-	    
+	    	   	    
 	    </div>
 	 </div>
 </div>
@@ -379,9 +139,9 @@ then(function(response)
 	  	if (response.data.status == 200)
 	  		{
 	  			//alert(response.data.fname);
-  			    $scope.email=response.data.mail;
-  			    $scope.first_name=response.data.fname;
-	  			$scope.last_name=response.data.lname;
+//  			    $scope.email=response.data.mail;
+//  			    $scope.first_name=response.data.fname;
+//	  			$scope.last_name=response.data.lname;
 			}
 	  	
 	 });
