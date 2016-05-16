@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>AWS Javascript Browser SDK: Auth0</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body background="black.jpg", style="margin-left:550px; margin-top:7cm";>
+
+  <a href="#" style="color:white;" class="btn-login"><h1>Login</h1></a>
+  <script src="//cdn.auth0.com/w2/auth0-widget-5.0.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/store.min.js"></script>
+  <script>
+    // check for HTML5 Web Storage (localStorage) support using store.js library
+    init()
+    function init() {
+        if (!store.enabled) {
+            alert('Local storage is not supported by your browser. Please disable "Private Mode", or upgrade to a modern browser.')
+            return
+        }
+    }
+    // reset state
+    store.clear();
+
+    // setup Auth0
+    $(document).ready(function() {
+      var widget = new Auth0Widget({
+        domain: window.config.domain,
+        clientID: window.config.clientID,
+        callbackURL: location.href,
+        callbackOnLocationHash: true
+      });
+
+      // when the Login button is clicked, open a login popup window
+      // open successful login, a unique token is stored in HTML5 Web Storage
+      // successful login forwards you to the next page
+      $('.btn-login').click(function(e) {
+        e.preventDefault();
+        widget.signin({
+          popup: true
+        }, null, function(err, profile, token) {
+          if (err) {
+            console.log(err);
+          } else {
+            store.set('userToken', token);
+            store.set('profile', JSON.stringify(profile));
+            location.href = 'page2.html'
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
